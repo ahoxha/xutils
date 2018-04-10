@@ -4,6 +4,7 @@ import java.util.Base64;
 import java.util.Objects;
 import java.util.Base64.Encoder;
 
+import org.ah.xutils.StringUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
