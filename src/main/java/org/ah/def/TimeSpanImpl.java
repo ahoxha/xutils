@@ -46,6 +46,81 @@ class TimeSpanImpl implements TimeSpan {
 	public long getSeconds() {
 		return seconds;
 	}
+	
+	private void formatLong(StringBuilder sb, long days, long hours, long minutes, long seconds) {
+		sb.append(days).append(" days, ")
+		.append(hours).append(" hours, ")
+		.append(minutes).append(" minutes, ")
+		.append(seconds).append(" seconds");
+	}
+	
+	private void formatLongAbr(StringBuilder sb, long days, long hours, long minutes, long seconds) {
+		sb.append(days).append(" d, ")
+		.append(hours).append(" h, ")
+		.append(minutes).append(" m, ")
+		.append(seconds).append(" s");
+	}
+	
+	private void formatLongAbrNoDelim(StringBuilder sb, long days, long hours, long minutes, long seconds) {
+		sb.append(days).append("d ")
+		.append(hours).append("h ")
+		.append(minutes).append("m ")
+		.append(seconds).append("s");
+	}
+	
+	private void formatShort(StringBuilder sb, long days, long hours, long minutes, long seconds) {
+		if (days > 0) {
+			sb.append(days).append(" days, ");
+		}
+		if (hours > 0) {
+			sb.append(hours).append(" hours, ");
+		}
+		if (minutes > 0) {
+			sb.append(minutes).append(" minutes, ");
+		}
+		if (seconds > 0) {
+			sb.append(seconds).append(" seconds");
+		}
+		if (sb.lastIndexOf(",") == sb.length() - 2) {
+			sb.replace(sb.length() - 2, sb.length(), "");
+		}
+	}
+	
+	private void formatShortAbr(StringBuilder sb, long days, long hours, long minutes, long seconds) {
+		if (days > 0) {
+			sb.append(days).append("d, ");
+		}
+		if (hours > 0) {
+			sb.append(hours).append("h, ");
+		}
+		if (minutes > 0) {
+			sb.append(minutes).append("m, ");
+		}
+		if (seconds > 0) {
+			sb.append(seconds).append("s");
+		}
+		if (sb.lastIndexOf(",") == sb.length() - 2) {
+			sb.replace(sb.length() - 2, sb.length(), "");
+		}
+	}
+	
+	private void formatShortAbrNoDelim(StringBuilder sb, long days, long hours, long minutes, long seconds) {
+		if (days > 0) {
+			sb.append(days).append("d ");
+		}
+		if (hours > 0) {
+			sb.append(hours).append("h ");
+		}
+		if (minutes > 0) {
+			sb.append(minutes).append("m ");
+		}
+		if (seconds > 0) {
+			sb.append(seconds).append("s");
+		}
+		if (sb.lastIndexOf(" ") == sb.length() - 1) {
+			sb.replace(sb.length() - 1, sb.length(), "");
+		}
+	}
 
 	@Override
 	public String format(TimeSpanFormat timeSpanFormat) {
@@ -55,79 +130,25 @@ class TimeSpanImpl implements TimeSpan {
 		}
 		switch (timeSpanFormat) {
 		case LONG:
-			sb.append(days).append(" days, ")
-			.append(hours).append(" hours, ")
-			.append(minutes).append(" minutes, ")
-			.append(seconds).append(" seconds");
+			formatLong(sb, days, hours, minutes, seconds);
 			break;
 		case LONG_ABR:
-			sb.append(days).append(" d, ")
-			.append(hours).append(" h, ")
-			.append(minutes).append(" m, ")
-			.append(seconds).append(" s");
+			formatLongAbr(sb, days, hours, minutes, seconds);
 			break;
 		case LONG_ABR_NODELIM:
-			sb.append(days).append("d ")
-			.append(hours).append("h ")
-			.append(minutes).append("m ")
-			.append(seconds).append("s");
+			formatLongAbrNoDelim(sb, days, hours, minutes, seconds);
 			break;
 		case SHORT:
-			if (days > 0) {
-				sb.append(days).append(" days, ");
-			}
-			if (hours > 0) {
-				sb.append(hours).append(" hours, ");
-			}
-			if (minutes > 0) {
-				sb.append(minutes).append(" minutes, ");
-			}
-			if (seconds > 0) {
-				sb.append(seconds).append(" seconds");
-			}
-			if (sb.lastIndexOf(",") == sb.length() - 2) {
-				sb.replace(sb.length() - 2, sb.length(), "");
-			}
+			formatShort(sb, days, hours, minutes, seconds);
 			break;
 		case SHORT_ABR:
-			if (days > 0) {
-				sb.append(days).append("d, ");
-			}
-			if (hours > 0) {
-				sb.append(hours).append("h, ");
-			}
-			if (minutes > 0) {
-				sb.append(minutes).append("m, ");
-			}
-			if (seconds > 0) {
-				sb.append(seconds).append("s");
-			}
-			if (sb.lastIndexOf(",") == sb.length() - 2) {
-				sb.replace(sb.length() - 2, sb.length(), "");
-			}
+			formatShortAbr(sb, days, hours, minutes, seconds);
 			break;
 		case SHORT_ABR_NODELIM:
-			if (days > 0) {
-				sb.append(days).append("d ");
-			}
-			if (hours > 0) {
-				sb.append(hours).append("h ");
-			}
-			if (minutes > 0) {
-				sb.append(minutes).append("m ");
-			}
-			if (seconds > 0) {
-				sb.append(seconds).append("s");
-			}
-			if (sb.lastIndexOf(" ") == sb.length() - 1) {
-				sb.replace(sb.length() - 1, sb.length(), "");
-			}
+			formatShortAbrNoDelim(sb, days, hours, minutes, seconds);
 			break;
 		default:
-			sb.append(days).append(" days, ")
-			.append(hours).append(" hours, ")
-			.append(minutes).append(" minutes, ")
-			.append(seconds).append(" seconds");
+			formatLong(sb, days, hours, minutes, seconds);
 			break;
 		}
 		return sb.toString();
