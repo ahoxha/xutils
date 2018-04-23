@@ -1,5 +1,7 @@
 package org.ah.def;
 
+import org.ah.def.formatters.Formatter;
+
 /**
  * Represents a period of time in days, hours, minutes, and seconds.
  * 
@@ -34,7 +36,10 @@ public interface TimeSpan {
 	 * @param timeSpanFormat
 	 * @return
 	 */
+	@Deprecated
 	String format(TimeSpanFormat timeSpanFormat);
+
+	String format(Formatter formatter);
 
 	/**
 	 * Converts the milliseconds into days, hours, minutes and seconds. Any left

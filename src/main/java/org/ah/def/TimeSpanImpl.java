@@ -1,5 +1,9 @@
 package org.ah.def;
 
+import org.ah.def.formatters.Formatter;
+import org.ah.def.formatters.TimeSpanLongAbbreviatedFormatter;
+import org.ah.def.formatters.TimeSpanLongFormatter;
+
 class TimeSpanImpl implements TimeSpan {
 
 	private long days;
@@ -46,28 +50,12 @@ class TimeSpanImpl implements TimeSpan {
 	public long getSeconds() {
 		return seconds;
 	}
-	
-	private void formatLong(StringBuilder sb, long days, long hours, long minutes, long seconds) {
-		sb.append(days).append(" days, ")
-		.append(hours).append(" hours, ")
-		.append(minutes).append(" minutes, ")
-		.append(seconds).append(" seconds");
-	}
-	
-	private void formatLongAbr(StringBuilder sb, long days, long hours, long minutes, long seconds) {
-		sb.append(days).append(" d, ")
-		.append(hours).append(" h, ")
-		.append(minutes).append(" m, ")
-		.append(seconds).append(" s");
-	}
-	
+
 	private void formatLongAbrNoDelim(StringBuilder sb, long days, long hours, long minutes, long seconds) {
-		sb.append(days).append("d ")
-		.append(hours).append("h ")
-		.append(minutes).append("m ")
-		.append(seconds).append("s");
+		sb.append(days).append("d ").append(hours).append("h ").append(minutes).append("m ").append(seconds)
+				.append("s");
 	}
-	
+
 	private void formatShort(StringBuilder sb, long days, long hours, long minutes, long seconds) {
 		if (days > 0) {
 			sb.append(days).append(" days, ");
@@ -85,7 +73,7 @@ class TimeSpanImpl implements TimeSpan {
 			sb.replace(sb.length() - 2, sb.length(), "");
 		}
 	}
-	
+
 	private void formatShortAbr(StringBuilder sb, long days, long hours, long minutes, long seconds) {
 		if (days > 0) {
 			sb.append(days).append("d, ");
@@ -103,7 +91,7 @@ class TimeSpanImpl implements TimeSpan {
 			sb.replace(sb.length() - 2, sb.length(), "");
 		}
 	}
-	
+
 	private void formatShortAbrNoDelim(StringBuilder sb, long days, long hours, long minutes, long seconds) {
 		if (days > 0) {
 			sb.append(days).append("d ");
@@ -125,15 +113,15 @@ class TimeSpanImpl implements TimeSpan {
 	@Override
 	public String format(TimeSpanFormat timeSpanFormat) {
 		StringBuilder sb = new StringBuilder();
-		if(timeSpanFormat == null) {
+		if (timeSpanFormat == null) {
 			return sb.toString();
 		}
 		switch (timeSpanFormat) {
 		case LONG:
-			formatLong(sb, days, hours, minutes, seconds);
+			sb.append(format(new TimeSpanLongFormatter()));
 			break;
 		case LONG_ABR:
-			formatLongAbr(sb, days, hours, minutes, seconds);
+			sb.append(format(new TimeSpanLongAbbreviatedFormatter()));
 			break;
 		case LONG_ABR_NODELIM:
 			formatLongAbrNoDelim(sb, days, hours, minutes, seconds);
@@ -148,10 +136,15 @@ class TimeSpanImpl implements TimeSpan {
 			formatShortAbrNoDelim(sb, days, hours, minutes, seconds);
 			break;
 		default:
-			formatLong(sb, days, hours, minutes, seconds);
+			format(new TimeSpanLongFormatter());
 			break;
 		}
 		return sb.toString();
+	}
+
+	@Override
+	public String format(Formatter formatter) {
+		return formatter.format(this);
 	}
 
 }

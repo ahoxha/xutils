@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.ah.def.TimeSpan;
+import org.ah.def.TimeSpanFormat;
 import org.ah.xutils.TimeUtils;
 import org.junit.Test;
 
@@ -81,7 +82,8 @@ public class TimeUtilsTest {
 	@Test
 	public void testNoTimeFormat() {
 		TimeSpan ts = TimeUtils.diff(0, seconds(1));
-		assertEquals("", ts.format(null));
+		TimeSpanFormat tsf = null;
+		assertEquals("", ts.format(tsf));
 	}
 
 	@Test
@@ -100,5 +102,19 @@ public class TimeUtilsTest {
 		assertEquals("Wrong value for minutes: " + ts.getMinutes(), 0, ts.getMinutes());
 		assertEquals("Wrong value for hours: " + ts.getHours(), 0, ts.getHours());
 		assertEquals("Wrong value for days: " + ts.getDays(), 0, ts.getDays());
+	}
+
+	@Test
+	public void testFormatter() {
+		TimeSpan ts = TimeUtils.diff(0, days(4) + hours(2) + minutes(12));
+		assertEquals("4 days, 2 hours, 12 minutes", ts.format((t) -> t.format(TimeSpanFormat.SHORT)));
+	}
+
+	@Test
+	public void testFormatterCustom() {
+		TimeSpan ts = TimeUtils.diff(0, days(4) + hours(2) + minutes(12));
+		assertEquals("4:2:12:0", ts.format((t) -> {
+			return t.getDays() + ":" + t.getHours() + ":" + t.getMinutes() + ":" + t.getSeconds();
+		}));
 	}
 }
