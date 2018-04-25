@@ -1,23 +1,24 @@
-package org.ah.utils;
+package org.ah.xutils.utils;
 
-import static org.ah.def.InMilliseconds.days;
-import static org.ah.def.InMilliseconds.hours;
-import static org.ah.def.InMilliseconds.minutes;
-import static org.ah.def.InMilliseconds.seconds;
+import static org.ah.xutils.def.InMilliseconds.days;
+import static org.ah.xutils.def.InMilliseconds.hours;
+import static org.ah.xutils.def.InMilliseconds.minutes;
+import static org.ah.xutils.def.InMilliseconds.seconds;
 import static org.junit.Assert.assertEquals;
 
-import org.ah.def.TimeSpanFormat;
-import org.ah.xutils.TimeUtils;
-import org.ah.def.TimeSpan;
+import org.ah.xutils.def.TimeSpan;
+import org.ah.xutils.def.TimeSpanFormat;
+import org.ah.xutils.utils.TimeUtils;
 import org.junit.Test;
 
-public class TimeUtilsShortAbrNoDelimTimeSpanFormatTest {
+public class TimeUtilsShortTimeSpanFormatTest {
+
 	@Test
 	public void test1() {
 		long start = System.currentTimeMillis();
 		long end = start + seconds(5);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("5s", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("5 seconds", ts.format(TimeSpanFormat.SHORT));
 	}
 
 	@Test
@@ -25,7 +26,7 @@ public class TimeUtilsShortAbrNoDelimTimeSpanFormatTest {
 		long start = System.currentTimeMillis();
 		long end = start + minutes(3);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("3m", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("3 minutes", ts.format(TimeSpanFormat.SHORT));
 	}
 
 	@Test
@@ -33,7 +34,7 @@ public class TimeUtilsShortAbrNoDelimTimeSpanFormatTest {
 		long start = System.currentTimeMillis();
 		long end = start + minutes(3) + seconds(5);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("3m 5s", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("3 minutes, 5 seconds", ts.format(TimeSpanFormat.SHORT));
 	}
 
 	@Test
@@ -41,7 +42,7 @@ public class TimeUtilsShortAbrNoDelimTimeSpanFormatTest {
 		long start = System.currentTimeMillis();
 		long end = start + hours(12);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("12h", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("12 hours", ts.format(TimeSpanFormat.SHORT));
 	}
 
 	@Test
@@ -49,7 +50,7 @@ public class TimeUtilsShortAbrNoDelimTimeSpanFormatTest {
 		long start = System.currentTimeMillis();
 		long end = start + hours(12) + minutes(8);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("12h 8m", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("12 hours, 8 minutes", ts.format(TimeSpanFormat.SHORT));
 	}
 
 	@Test
@@ -57,7 +58,7 @@ public class TimeUtilsShortAbrNoDelimTimeSpanFormatTest {
 		long start = System.currentTimeMillis();
 		long end = start + hours(12) + seconds(6);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("12h 6s", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("12 hours, 6 seconds", ts.format(TimeSpanFormat.SHORT));
 	}
 
 	@Test
@@ -65,7 +66,7 @@ public class TimeUtilsShortAbrNoDelimTimeSpanFormatTest {
 		long start = System.currentTimeMillis();
 		long end = start + hours(12) + minutes(8) + seconds(2);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("12h 8m 2s", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("12 hours, 8 minutes, 2 seconds", ts.format(TimeSpanFormat.SHORT));
 	}
 
 	@Test
@@ -73,7 +74,7 @@ public class TimeUtilsShortAbrNoDelimTimeSpanFormatTest {
 		long start = System.currentTimeMillis();
 		long end = start + days(3);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("3d", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("3 days", ts.format(TimeSpanFormat.SHORT));
 	}
 
 	@Test
@@ -81,55 +82,54 @@ public class TimeUtilsShortAbrNoDelimTimeSpanFormatTest {
 		long start = System.currentTimeMillis();
 		long end = start + days(3) + hours(5);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("3d 5h", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("3 days, 5 hours", ts.format(TimeSpanFormat.SHORT));
 	}
-
+	
 	@Test
 	public void test10() {
 		long start = System.currentTimeMillis();
 		long end = start + days(3) + minutes(7);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("3d 7m", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("3 days, 7 minutes", ts.format(TimeSpanFormat.SHORT));
 	}
-
+	
 	@Test
 	public void test11() {
 		long start = System.currentTimeMillis();
 		long end = start + days(3) + seconds(1);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("3d 1s", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("3 days, 1 seconds", ts.format(TimeSpanFormat.SHORT));
 	}
-
+	
 	@Test
 	public void test12() {
 		long start = System.currentTimeMillis();
 		long end = start + days(3) + minutes(4) + seconds(1);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("3d 4m 1s", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("3 days, 4 minutes, 1 seconds", ts.format(TimeSpanFormat.SHORT));
 	}
-
+	
 	@Test
 	public void test13() {
 		long start = System.currentTimeMillis();
 		long end = start + days(3) + hours(4) + seconds(1);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("3d 4h 1s", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("3 days, 4 hours, 1 seconds", ts.format(TimeSpanFormat.SHORT));
 	}
-
+	
 	@Test
 	public void test14() {
 		long start = System.currentTimeMillis();
 		long end = start + days(3) + hours(4) + minutes(11);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("3d 4h 11m", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("3 days, 4 hours, 11 minutes", ts.format(TimeSpanFormat.SHORT));
 	}
-
+	
 	@Test
 	public void test15() {
 		long start = System.currentTimeMillis();
 		long end = start + days(3) + hours(4) + minutes(11) + seconds(4);
 		TimeSpan ts = TimeUtils.diff(start, end);
-		assertEquals("3d 4h 11m 4s", ts.format(TimeSpanFormat.SHORT_ABR_NODELIM));
+		assertEquals("3 days, 4 hours, 11 minutes, 4 seconds", ts.format(TimeSpanFormat.SHORT));
 	}
-
 }

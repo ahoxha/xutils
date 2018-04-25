@@ -1,6 +1,6 @@
-package org.ah.def.formatters;
+package org.ah.xutils.def.formatters;
 
-import org.ah.def.TimeSpan;
+import org.ah.xutils.def.TimeSpan;
 
 /**
  * The full representation of TimeSpan, it shows 0-valued units as well. Words

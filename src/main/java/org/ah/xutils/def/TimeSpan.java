@@ -1,6 +1,6 @@
-package org.ah.def;
+package org.ah.xutils.def;
 
-import org.ah.def.formatters.Formatter;
+import org.ah.xutils.def.formatters.Formatter;
 
 /**
  * Represents a period of time in days, hours, minutes, and seconds.

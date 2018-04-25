@@ -1,6 +1,6 @@
-package org.ah.xutils;
+package org.ah.xutils.utils;
 
-import org.ah.def.TimeSpan;
+import org.ah.xutils.def.TimeSpan;
 
 public final class TimeUtils {
 

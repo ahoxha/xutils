@@ -1,14 +1,14 @@
-package org.ah.utils;
+package org.ah.xutils.utils;
 
-import static org.ah.def.InMilliseconds.days;
-import static org.ah.def.InMilliseconds.hours;
-import static org.ah.def.InMilliseconds.minutes;
-import static org.ah.def.InMilliseconds.seconds;
+import static org.ah.xutils.def.InMilliseconds.days;
+import static org.ah.xutils.def.InMilliseconds.hours;
+import static org.ah.xutils.def.InMilliseconds.minutes;
+import static org.ah.xutils.def.InMilliseconds.seconds;
 import static org.junit.Assert.assertEquals;
 
-import org.ah.def.TimeSpan;
-import org.ah.def.TimeSpanFormat;
-import org.ah.xutils.TimeUtils;
+import org.ah.xutils.def.TimeSpan;
+import org.ah.xutils.def.TimeSpanFormat;
+import org.ah.xutils.utils.TimeUtils;
 import org.junit.Test;
 
 public class TimeUtilsLongAbrNoDelimTimeSpanFormatTest {

@@ -1,6 +1,6 @@
-package org.ah.def.formatters;
+package org.ah.xutils.def.formatters;
 
-import org.ah.def.TimeSpan;
+import org.ah.xutils.def.TimeSpan;
 
 /**
  * This interface is used to define a formatter for a {@code TimeSpan} object.

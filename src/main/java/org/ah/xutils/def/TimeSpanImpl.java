@@ -1,8 +1,8 @@
-package org.ah.def;
+package org.ah.xutils.def;
 
-import org.ah.def.formatters.Formatter;
-import org.ah.def.formatters.TimeSpanLongAbbreviatedFormatter;
-import org.ah.def.formatters.TimeSpanLongFormatter;
+import org.ah.xutils.def.formatters.Formatter;
+import org.ah.xutils.def.formatters.TimeSpanLongAbbreviatedFormatter;
+import org.ah.xutils.def.formatters.TimeSpanLongFormatter;
 
 class TimeSpanImpl implements TimeSpan {
 

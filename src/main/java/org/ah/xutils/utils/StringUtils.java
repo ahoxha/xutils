@@ -1,4 +1,4 @@
-package org.ah.xutils;
+package org.ah.xutils.utils;
 
 import java.util.Base64;
 import java.util.Base64.Decoder;

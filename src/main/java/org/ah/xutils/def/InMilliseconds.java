@@ -1,4 +1,4 @@
-package org.ah.def;
+package org.ah.xutils.def;
 
 /**
  * Provides methods to easily convert days, hours, minutes and seconds into
