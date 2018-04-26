@@ -9,7 +9,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.ah.xutils.def.TimeSpan;
-import org.ah.xutils.def.TimeSpanFormat;
 import org.junit.Test;
 
 public class TimeUtilsTest {
