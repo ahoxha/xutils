@@ -1,12 +1,6 @@
 package org.ah.xutils.def;
 
 import org.ah.xutils.def.formatters.Formatter;
-import org.ah.xutils.def.formatters.TimeSpanLongAbbreviatedFormatter;
-import org.ah.xutils.def.formatters.TimeSpanLongAbbreviatedNoDelimFormatter;
-import org.ah.xutils.def.formatters.TimeSpanLongFormatter;
-import org.ah.xutils.def.formatters.TimeSpanShortAbbreviatedFormatter;
-import org.ah.xutils.def.formatters.TimeSpanShortAbbreviatedNoDelimFormatter;
-import org.ah.xutils.def.formatters.TimeSpanShortFormatter;
 
 class TimeSpanImpl implements TimeSpan {
 
@@ -53,38 +47,6 @@ class TimeSpanImpl implements TimeSpan {
 	@Override
 	public long getSeconds() {
 		return seconds;
-	}
-
-	@Override
-	public String format(TimeSpanFormat timeSpanFormat) {
-		StringBuilder sb = new StringBuilder();
-		if (timeSpanFormat == null) {
-			return sb.toString();
-		}
-		switch (timeSpanFormat) {
-		case LONG:
-			sb.append(format(new TimeSpanLongFormatter()));
-			break;
-		case LONG_ABR:
-			sb.append(format(new TimeSpanLongAbbreviatedFormatter()));
-			break;
-		case LONG_ABR_NODELIM:
-			sb.append(format(new TimeSpanLongAbbreviatedNoDelimFormatter()));
-			break;
-		case SHORT:
-			sb.append(format(new TimeSpanShortFormatter()));
-			break;
-		case SHORT_ABR:
-			sb.append(format(new TimeSpanShortAbbreviatedFormatter()));
-			break;
-		case SHORT_ABR_NODELIM:
-			sb.append(format(new TimeSpanShortAbbreviatedNoDelimFormatter()));
-			break;
-		default:
-			format(new TimeSpanLongFormatter());
-			break;
-		}
-		return sb.toString();
 	}
 
 	@Override

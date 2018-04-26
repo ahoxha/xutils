@@ -2,6 +2,12 @@ package org.ah.xutils.def.formatters;
 
 import org.ah.xutils.def.TimeSpan;
 
+/**
+ * 4d, 5s
+ * 
+ * @author armend
+ *
+ */
 public class TimeSpanShortAbbreviatedFormatter implements Formatter {
 	@Override
 	public String format(TimeSpan ts) {

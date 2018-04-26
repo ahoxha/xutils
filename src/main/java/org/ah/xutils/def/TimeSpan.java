@@ -1,5 +1,7 @@
 package org.ah.xutils.def;
 
+import javax.annotation.Nonnull;
+
 import org.ah.xutils.def.formatters.Formatter;
 
 /**
@@ -33,13 +35,11 @@ public interface TimeSpan {
 	/**
 	 * Returns a formatted string of this TimeSpan.
 	 * 
-	 * @param timeSpanFormat
+	 * @param formatter
 	 * @return
 	 */
-	@Deprecated
-	String format(TimeSpanFormat timeSpanFormat);
-
-	String format(Formatter formatter);
+	@Nonnull
+	String format(@Nonnull Formatter formatter);
 
 	/**
 	 * Converts the milliseconds into days, hours, minutes and seconds. Any left
