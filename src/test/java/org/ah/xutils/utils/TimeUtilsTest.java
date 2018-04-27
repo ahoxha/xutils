@@ -1,15 +1,14 @@
-package org.ah.utils;
+package org.ah.xutils.utils;
 
-import static org.ah.def.InMilliseconds.days;
-import static org.ah.def.InMilliseconds.hours;
-import static org.ah.def.InMilliseconds.minutes;
-import static org.ah.def.InMilliseconds.seconds;
+import static org.ah.xutils.def.InMilliseconds.days;
+import static org.ah.xutils.def.InMilliseconds.hours;
+import static org.ah.xutils.def.InMilliseconds.minutes;
+import static org.ah.xutils.def.InMilliseconds.seconds;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.ah.def.TimeSpan;
-import org.ah.xutils.TimeUtils;
+import org.ah.xutils.def.TimeSpan;
 import org.junit.Test;
 
 public class TimeUtilsTest {
@@ -79,12 +78,6 @@ public class TimeUtilsTest {
 	}
 
 	@Test
-	public void testNoTimeFormat() {
-		TimeSpan ts = TimeUtils.diff(0, seconds(1));
-		assertEquals("", ts.format(null));
-	}
-
-	@Test
 	public void testTruncateExtraMillis() {
 		TimeSpan ts = TimeUtils.diff(0, seconds(3) + 520);
 		assertEquals("Wrong value for seconds: " + ts.getSeconds(), 3, ts.getSeconds());
@@ -100,5 +93,13 @@ public class TimeUtilsTest {
 		assertEquals("Wrong value for minutes: " + ts.getMinutes(), 0, ts.getMinutes());
 		assertEquals("Wrong value for hours: " + ts.getHours(), 0, ts.getHours());
 		assertEquals("Wrong value for days: " + ts.getDays(), 0, ts.getDays());
+	}
+
+	@Test
+	public void testFormatterCustom() {
+		TimeSpan ts = TimeUtils.diff(0, days(4) + hours(2) + minutes(12));
+		assertEquals("4:2:12:0", ts.format((t) -> {
+			return t.getDays() + ":" + t.getHours() + ":" + t.getMinutes() + ":" + t.getSeconds();
+		}));
 	}
 }

@@ -1,10 +1,10 @@
-package org.ah.utils;
+package org.ah.xutils.utils;
 
 import java.util.Base64;
 import java.util.Objects;
 import java.util.Base64.Encoder;
 
-import org.ah.xutils.StringUtils;
+import org.ah.xutils.utils.StringUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

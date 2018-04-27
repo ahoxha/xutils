@@ -1,11 +1,11 @@
-package org.ah.def;
+package org.ah.xutils.def;
 
 import org.junit.Test;
 
-import static org.ah.def.InMilliseconds.days;
-import static org.ah.def.InMilliseconds.hours;
-import static org.ah.def.InMilliseconds.minutes;
-import static org.ah.def.InMilliseconds.seconds;
+import static org.ah.xutils.def.InMilliseconds.days;
+import static org.ah.xutils.def.InMilliseconds.hours;
+import static org.ah.xutils.def.InMilliseconds.minutes;
+import static org.ah.xutils.def.InMilliseconds.seconds;
 import static org.junit.Assert.assertEquals;
 
 public class InMillisecondsTest {
