@@ -1,5 +1,6 @@
 package org.ah.xutils.utils;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Base64.Decoder;
 import java.util.Base64.Encoder;
@@ -15,12 +16,12 @@ public final class StringUtils {
 
 	public static String decodeBase64(String encodedString) {
 		Decoder dec = Base64.getDecoder();
-		return new String(dec.decode(encodedString.getBytes()));
+		return new String(dec.decode(encodedString.getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
 	}
 
 	public static String encodeToBase64String(String text) {
 		Encoder enc = Base64.getEncoder();
-		return enc.encodeToString(text.getBytes());
+		return enc.encodeToString(text.getBytes(StandardCharsets.UTF_8));
 	}
 
 	public static String encodeToBase64String(byte[] bytes) {

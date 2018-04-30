@@ -1,14 +1,14 @@
 package org.ah.xutils.utils;
 
-import java.util.Base64;
-import java.util.Objects;
-import java.util.Base64.Encoder;
-
-import org.ah.xutils.utils.StringUtils;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.Base64.Encoder;
+import java.util.Objects;
+
+import org.junit.Test;
 
 public class StringUtilsTest {
 
@@ -23,7 +23,8 @@ public class StringUtilsTest {
 	public void testEncodeToBase64StringWithNonEmptyString() {
 		String plain = "cosmic microwave background radiation";
 		Encoder enc = Base64.getEncoder();
-		assertTrue(Objects.equals(enc.encodeToString(plain.getBytes()), StringUtils.encodeToBase64String(plain)));
+		assertTrue(Objects.equals(enc.encodeToString(plain.getBytes(StandardCharsets.UTF_8)),
+				StringUtils.encodeToBase64String(plain)));
 	}
 
 	@Test
@@ -118,39 +119,39 @@ public class StringUtilsTest {
 		assertEquals("CosmicMicrowaveBackgroundRadiation",
 				StringUtils.toCamelCase("COSMIC_MICROWAVE_BACKGROUND_RADIATION"));
 	}
-	
+
 	@Test
 	public void testToCamelCaseWithoutPrefixWithSpace() {
-		assertEquals("FirstName",StringUtils.toCamelCase("first name"));
+		assertEquals("FirstName", StringUtils.toCamelCase("first name"));
 	}
-	
+
 	@Test
-	public void testToCamelCaseWithoutPrefixWithHyphen(){
+	public void testToCamelCaseWithoutPrefixWithHyphen() {
 		assertEquals("LastName", StringUtils.toCamelCase("last-name"));
 	}
-	
+
 	@Test
-	public void testToCamelCaseWithoutPrefixWithSpaceAndHyphen(){
+	public void testToCamelCaseWithoutPrefixWithSpaceAndHyphen() {
 		assertEquals("MyCustomClass", StringUtils.toCamelCase("my custom -class"));
 	}
-	
+
 	@Test
-	public void testCamelCaseWithoutPrefixWithColon(){
+	public void testCamelCaseWithoutPrefixWithColon() {
 		assertEquals("MyCustomClass", StringUtils.toCamelCase("my:custom:class"));
 	}
-	
+
 	@Test
-	public void testCamelCaseWithoutPrefixWithSemicolon(){
+	public void testCamelCaseWithoutPrefixWithSemicolon() {
 		assertEquals("MyCustomClass", StringUtils.toCamelCase("My;custoM;class"));
 	}
-	
+
 	@Test
-	public void testCamelCaseWithoutPrefixWithSemicolon1(){
+	public void testCamelCaseWithoutPrefixWithSemicolon1() {
 		assertEquals("MyCustomClass", StringUtils.toCamelCase("My;custoM;class;"));
 	}
-	
+
 	@Test
-	public void testCamleCaseWithoutPrefixWithEqualSign(){
+	public void testCamleCaseWithoutPrefixWithEqualSign() {
 		assertEquals("MyCustomClass", StringUtils.toCamelCase("my=custom=class"));
 	}
 }
