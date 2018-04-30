@@ -20,7 +20,7 @@ public final class InMilliseconds {
 	 * @return Number of milliseconds in {@code value} days.
 	 */
 	public static long days(long value) {
-		return value * 24 * 60 * 60 * 1000;
+		return value * 86400000;// 24 * 60 * 60 * 1000;
 	}
 
 	/**
@@ -31,7 +31,7 @@ public final class InMilliseconds {
 	 * @return Number of milliseconds in {@code value} hours.
 	 */
 	public static long hours(long value) {
-		return value * 60 * 60 * 1000;
+		return value * 3600000;// 60 * 60 * 1000;
 	}
 
 	/**
@@ -42,7 +42,7 @@ public final class InMilliseconds {
 	 * @return Number of milliseconds in {@code value} minutes.
 	 */
 	public static long minutes(long value) {
-		return value * 60 * 1000;
+		return value * 60000;// 60 * 1000;
 	}
 
 	/**
