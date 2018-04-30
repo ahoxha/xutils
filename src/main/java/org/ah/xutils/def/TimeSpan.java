@@ -45,7 +45,7 @@ public interface TimeSpan {
 	 * Converts the milliseconds into days, hours, minutes and seconds. Any left
 	 * over milliseconds are truncated.
 	 * 
-	 * @param millis
+	 * @param milliseconds
 	 *            Number of milliseconds.
 	 * @return A {@link TimeSpan} object that represents a period of time.
 	 */
