@@ -2,6 +2,11 @@ package org.ah.xutils.def;
 
 import org.ah.xutils.def.formatters.Formatter;
 
+import static org.ah.xutils.def.InMilliseconds.days;
+import static org.ah.xutils.def.InMilliseconds.hours;
+import static org.ah.xutils.def.InMilliseconds.minutes;
+import static org.ah.xutils.def.InMilliseconds.seconds;
+
 class TimeSpanImpl implements TimeSpan {
 
 	private long days;
@@ -10,16 +15,16 @@ class TimeSpanImpl implements TimeSpan {
 	private long seconds;
 
 	private TimeSpanImpl(long millis) {
-		days = millis / 1000 / 60 / 60 / 24;
-		millis = millis - InMilliseconds.days(days);
+		days = millis / days(1);
+		millis = millis - days(days);
 		if (millis > 0) {
-			hours = millis / 1000 / 60 / 60;
-			millis = millis - InMilliseconds.hours(hours);
+			hours = millis / hours(1);
+			millis = millis - hours(hours);
 			if (millis > 0) {
-				minutes = millis / 1000 / 60;
-				millis = millis - InMilliseconds.minutes(minutes);
+				minutes = millis / minutes(1);
+				millis = millis - minutes(minutes);
 				if (millis > 0) {
-					seconds = millis / 1000;
+					seconds = millis / seconds(1);
 				}
 			}
 		}
