@@ -3,6 +3,7 @@ package org.ah.xutils.def;
 import javax.annotation.Nonnull;
 
 import org.ah.xutils.def.formatters.Formatter;
+import org.ah.xutils.def.formatters.TimeSpanLongFormatter;
 
 /**
  * Represents a period of time in days, hours, minutes, and seconds.
@@ -40,6 +41,16 @@ public interface TimeSpan {
 	 */
 	@Nonnull
 	String format(@Nonnull Formatter formatter);
+
+	/**
+	 * Formats the TimeSpan using
+	 * {@link org.ah.xutils.def.formatters.TimeSpanLongFormatter}.
+	 * 
+	 * @return
+	 */
+	default @Nonnull String format() {
+		return format(new TimeSpanLongFormatter());
+	}
 
 	/**
 	 * Converts the milliseconds into days, hours, minutes and seconds. Any left
