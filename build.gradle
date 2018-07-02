@@ -46,7 +46,7 @@ test {
       events "failed"//, "skipped", "passed"
       afterSuite { desc, result ->
         if (!desc.parent) { 
-            println "\n${result.testCount} run | ${result.successfulTestCount} passed | ${result.failedTestCount} failed | ${result.skippedTestCount} skipped\n"
+            println "\n${result.testCount} ran | ${result.successfulTestCount} passed | ${result.failedTestCount} failed | ${result.skippedTestCount} skipped\n"
         }
       }
     }
