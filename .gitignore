@@ -6,3 +6,7 @@ build/
 .classpath
 .project
 .DS_Store
+.idea/
+xutils.iml
+xutils.ipr
+xutils.iws
