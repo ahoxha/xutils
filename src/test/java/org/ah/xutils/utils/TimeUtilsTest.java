@@ -1,11 +1,11 @@
 package org.ah.xutils.utils;
 
 import org.ah.xutils.def.TimeSpan;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.ah.xutils.def.InMilliseconds.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 class TimeUtilsTest {
     @Test
@@ -159,5 +159,25 @@ class TimeUtilsTest {
         assertEquals(3, timeSpan.getHours());
         assertEquals(0, timeSpan.getMinutes());
         assertEquals(0, timeSpan.getSeconds());
+    }
+
+    @Test
+    void testDiffWithNegativeValue() {
+        try {
+            TimeUtils.diff(-34356, -1234);
+            fail("Negative values should not be allowed.");
+        } catch (IllegalArgumentException exception) {
+            assertNotNull(exception);
+        }
+    }
+
+    @Test
+    void testToTimeSpanWithNegativeValue() {
+        try {
+            TimeUtils.toTimeSpan(-100);
+            fail("Negative values should not be allowed.");
+        } catch (IllegalArgumentException exception) {
+            assertNotNull(exception);
+        }
     }
 }
