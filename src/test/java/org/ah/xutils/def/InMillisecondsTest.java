@@ -6,7 +6,7 @@ import static org.ah.xutils.def.InMilliseconds.days;
 import static org.ah.xutils.def.InMilliseconds.hours;
 import static org.ah.xutils.def.InMilliseconds.minutes;
 import static org.ah.xutils.def.InMilliseconds.seconds;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InMillisecondsTest {
 	@Test
