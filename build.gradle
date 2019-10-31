@@ -1,13 +1,12 @@
 import com.github.spotbugs.SpotBugsTask
 
 plugins {
-  id "com.github.spotbugs" version "1.6.1"
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'jacoco'
+    id "com.github.spotbugs" version "2.0.1"
 }
-
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'jacoco'
 
 repositories {
 	mavenCentral()
@@ -29,11 +28,10 @@ tasks.withType(SpotBugsTask) {
   }
 } 
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.7'
+wrapper {
+    gradleVersion = '5.6.2'
 }
 
-// In this section you declare the dependencies for your production and test code
 dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.google.code.findbugs:jsr305:3.0.2'
@@ -49,7 +47,7 @@ test {
       events "failed"//, "skipped", "passed"
       afterSuite { desc, result ->
         if (!desc.parent) { 
-            println "\n${result.testCount} ran | ${result.successfulTestCount} passed | ${result.failedTestCount} failed | ${result.skippedTestCount} skipped\n"
+            println "\n${result.testCount} total | ${result.successfulTestCount} passed | ${result.failedTestCount} failed | ${result.skippedTestCount} skipped\n"
         }
       }
     }
