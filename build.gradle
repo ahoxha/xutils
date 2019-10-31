@@ -33,8 +33,14 @@ wrapper {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
     compile 'com.google.code.findbugs:jsr305:3.0.2'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.1.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+    
+    testCompile 'junit:junit:4.12'
+    
 }
 
 jar {
@@ -42,6 +48,7 @@ jar {
  }
  
 test {
+    useJUnitPlatform()
  	testLogging {
       exceptionFormat = 'full'
       events "failed"//, "skipped", "passed"
