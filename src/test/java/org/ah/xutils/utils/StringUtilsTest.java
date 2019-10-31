@@ -1,157 +1,154 @@
 package org.ah.xutils.utils;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Base64.Encoder;
-import java.util.Objects;
 
-import org.junit.Test;
+class StringUtilsTest {
 
-public class StringUtilsTest {
+    @Test
+    void testDecodeBase64WithNonEmptyString() {
+        String plain = "test";
+        String encoded = StringUtils.encodeToBase64String(plain);
+        assertEquals(plain, StringUtils.decodeBase64(encoded), "Wrong value");
+    }
 
-	@Test
-	public void testDecodeBase64WithNonEmptyString() {
-		String plain = "test";
-		String encoded = StringUtils.encodeToBase64String(plain);
-		assertEquals("Wrong value", plain, StringUtils.decodeBase64(encoded));
-	}
+    @Test
+    void testEncodeToBase64StringWithNonEmptyString() {
+        String plain = "cosmic microwave background radiation";
+        Encoder enc = Base64.getEncoder();
+        assertEquals(enc.encodeToString(plain.getBytes(StandardCharsets.UTF_8)), StringUtils.encodeToBase64String(plain));
+    }
 
-	@Test
-	public void testEncodeToBase64StringWithNonEmptyString() {
-		String plain = "cosmic microwave background radiation";
-		Encoder enc = Base64.getEncoder();
-		assertTrue(Objects.equals(enc.encodeToString(plain.getBytes(StandardCharsets.UTF_8)),
-				StringUtils.encodeToBase64String(plain)));
-	}
+    @Test
+    void testToCamelCase1() {
+        assertEquals("addNameAndSurname", StringUtils.toCamelCase("NAME_AND_SURNAME", "add"), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase1() {
-		assertEquals("Wrong value", "addNameAndSurname", StringUtils.toCamelCase("NAME_AND_SURNAME", "add"));
-	}
+    @Test
+    void testToCamelCase2() {
+        assertEquals("addName", StringUtils.toCamelCase("name", "add"), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase2() {
-		assertEquals("Wrong value", "addName", StringUtils.toCamelCase("name", "add"));
-	}
+    @Test
+    void testToCamelCase3() {
+        assertEquals("addFirstName", StringUtils.toCamelCase("FIRST_NAME", "add"), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase3() {
-		assertEquals("Wrong value", "addFirstName", StringUtils.toCamelCase("FIRST_NAME", "add"));
-	}
+    @Test
+    void testToCamelCase4() {
+        assertEquals("addNameAndSurnameAndMiddleName",
+                StringUtils.toCamelCase("NAME_AND_SURNAME_AND_MIDDLE_NAME", "add"), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase4() {
-		assertEquals("Wrong value", "addNameAndSurnameAndMiddleName",
-				StringUtils.toCamelCase("NAME_AND_SURNAME_AND_MIDDLE_NAME", "add"));
-	}
+    @Test
+    void testToCamelCase5() {
+        assertEquals("addAbCdAndA", StringUtils.toCamelCase("AB_cD_and_a", "add"), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase5() {
-		assertEquals("Wrong value", "addAbCdAndA", StringUtils.toCamelCase("AB_cD_and_a", "add"));
-	}
+    @Test
+    void testToCamelCase6() {
+        assertEquals("addAbcDef", StringUtils.toCamelCase("_ABC_DEF", "add"), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase6() {
-		assertEquals("Wrong value", "addAbcDef", StringUtils.toCamelCase("_ABC_DEF", "add"));
-	}
+    @Test
+    void testToCamelCase7() {
+        assertEquals("addAbcDef", StringUtils.toCamelCase("ABC_DEF_", "add"), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase7() {
-		assertEquals("Wrong value", "addAbcDef", StringUtils.toCamelCase("ABC_DEF_", "add"));
-	}
+    @Test
+    void testToCamelCase8() {
+        assertEquals("addAbcDef", StringUtils.toCamelCase("_ABC_DEF_", "add"), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase8() {
-		assertEquals("Wrong value", "addAbcDef", StringUtils.toCamelCase("_ABC_DEF_", "add"));
-	}
+    @Test
+    void testToCamelCase9() {
+        assertEquals("addABCD", StringUtils.toCamelCase("A_b_c_D", "add"), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase9() {
-		assertEquals("Wrong value", "addABCD", StringUtils.toCamelCase("A_b_c_D", "add"));
-	}
+    @Test
+    void testToCamelCase10() {
+        assertEquals("CelsiusToFahrenheitConverter",
+                StringUtils.toCamelCase("CELSIUS_TO_FAHRENHEIT_CONVERTER", ""), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase10() {
-		assertEquals("Wrong value", "CelsiusToFahrenheitConverter",
-				StringUtils.toCamelCase("CELSIUS_TO_FAHRENHEIT_CONVERTER", ""));
-	}
+    @Test
+    void testToCamelCase11() {
+        assertEquals("A", StringUtils.toCamelCase("a", ""), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase11() {
-		assertEquals("Wrong value", "A", StringUtils.toCamelCase("a", ""));
-	}
+    @Test
+    void testToCamelCase12() {
+        assertEquals("Test", StringUtils.toCamelCase("tESt", ""), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase12() {
-		assertEquals("Wrong value", "Test", StringUtils.toCamelCase("tESt", ""));
-	}
+    @Test
+    void testToCamelCase13() {
+        assertEquals("", StringUtils.toCamelCase(null, ""), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase13() {
-		assertEquals("Wrong value", "", StringUtils.toCamelCase(null, ""));
-	}
+    @Test
+    void testToCamelCase14() {
+        assertEquals("", StringUtils.toCamelCase("", ""), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase14() {
-		assertEquals("Wrong value", "", StringUtils.toCamelCase("", ""));
-	}
+    @Test
+    void testToCamelCase15() {
+        assertEquals("", StringUtils.toCamelCase("", "add"), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase15() {
-		assertEquals("Wrong value", "", StringUtils.toCamelCase("", "add"));
-	}
+    @Test
+    void testToCamelCase16() {
+        assertEquals("", StringUtils.toCamelCase(null, null), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase16() {
-		assertEquals("Wrong value", "", StringUtils.toCamelCase(null, null));
-	}
+    @Test
+    void testToCamelCase18() {
+        assertEquals("", StringUtils.toCamelCase("test", null), "Wrong value");
+    }
 
-	@Test
-	public void testToCamelCase18() {
-		assertEquals("Wrong value", "", StringUtils.toCamelCase("test", null));
-	}
+    @Test
+    void testToCamelCaseWithoutPrefix1() {
+        assertEquals("CosmicMicrowaveBackgroundRadiation",
+                StringUtils.toCamelCase("COSMIC_MICROWAVE_BACKGROUND_RADIATION"));
+    }
 
-	@Test
-	public void testToCamelCaseWithoutPrefix1() {
-		assertEquals("CosmicMicrowaveBackgroundRadiation",
-				StringUtils.toCamelCase("COSMIC_MICROWAVE_BACKGROUND_RADIATION"));
-	}
+    @Test
+    void testToCamelCaseWithoutPrefixWithSpace() {
+        assertEquals("FirstName", StringUtils.toCamelCase("first name"));
+    }
 
-	@Test
-	public void testToCamelCaseWithoutPrefixWithSpace() {
-		assertEquals("FirstName", StringUtils.toCamelCase("first name"));
-	}
+    @Test
+    void testToCamelCaseWithoutPrefixWithHyphen() {
+        assertEquals("LastName", StringUtils.toCamelCase("last-name"));
+    }
 
-	@Test
-	public void testToCamelCaseWithoutPrefixWithHyphen() {
-		assertEquals("LastName", StringUtils.toCamelCase("last-name"));
-	}
+    @Test
+    void testToCamelCaseWithoutPrefixWithSpaceAndHyphen() {
+        assertEquals("MyCustomClass", StringUtils.toCamelCase("my custom -class"));
+    }
 
-	@Test
-	public void testToCamelCaseWithoutPrefixWithSpaceAndHyphen() {
-		assertEquals("MyCustomClass", StringUtils.toCamelCase("my custom -class"));
-	}
+    @Test
+    void testCamelCaseWithoutPrefixWithColon() {
+        assertEquals("MyCustomClass", StringUtils.toCamelCase("my:custom:class"));
+    }
 
-	@Test
-	public void testCamelCaseWithoutPrefixWithColon() {
-		assertEquals("MyCustomClass", StringUtils.toCamelCase("my:custom:class"));
-	}
+    @Test
+    void testCamelCaseWithoutPrefixWithSemicolon() {
+        assertEquals("MyCustomClass", StringUtils.toCamelCase("My;custoM;class"));
+    }
 
-	@Test
-	public void testCamelCaseWithoutPrefixWithSemicolon() {
-		assertEquals("MyCustomClass", StringUtils.toCamelCase("My;custoM;class"));
-	}
+    @Test
+    void testCamelCaseWithoutPrefixWithSemicolon1() {
+        assertEquals("MyCustomClass", StringUtils.toCamelCase("My;custoM;class;"));
+    }
 
-	@Test
-	public void testCamelCaseWithoutPrefixWithSemicolon1() {
-		assertEquals("MyCustomClass", StringUtils.toCamelCase("My;custoM;class;"));
-	}
-
-	@Test
-	public void testCamleCaseWithoutPrefixWithEqualSign() {
-		assertEquals("MyCustomClass", StringUtils.toCamelCase("my=custom=class"));
-	}
+    @Test
+    void testCamleCaseWithoutPrefixWithEqualSign() {
+        assertEquals("MyCustomClass", StringUtils.toCamelCase("my=custom=class"));
+    }
 }
