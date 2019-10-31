@@ -35,10 +35,10 @@ class TimeUtilsTest {
         long start = System.currentTimeMillis();
         long end = start + hours(9);
         TimeSpan ts = TimeUtils.diff(start, end);
-        assertEquals( 0, ts.getSeconds(),"Wrong value for seconds: " + ts.getSeconds());
-        assertEquals( 0, ts.getMinutes(),"Wrong value for minutes: " + ts.getMinutes());
-        assertEquals( 9, ts.getHours(),"Wrong value for hours: " + ts.getHours());
-        assertEquals( 0, ts.getDays(),"Wrong value for days: " + ts.getDays());
+        assertEquals(0, ts.getSeconds(), "Wrong value for seconds: " + ts.getSeconds());
+        assertEquals(0, ts.getMinutes(), "Wrong value for minutes: " + ts.getMinutes());
+        assertEquals(9, ts.getHours(), "Wrong value for hours: " + ts.getHours());
+        assertEquals(0, ts.getDays(), "Wrong value for days: " + ts.getDays());
     }
 
     @Test
@@ -46,10 +46,10 @@ class TimeUtilsTest {
         long start = System.currentTimeMillis();
         long end = start + days(2);
         TimeSpan ts = TimeUtils.diff(start, end);
-        assertEquals( 0, ts.getSeconds(),"Wrong value for seconds: " + ts.getSeconds());
-        assertEquals( 0, ts.getMinutes(),"Wrong value for minutes: " + ts.getMinutes());
-        assertEquals( 0, ts.getHours(),"Wrong value for hours: " + ts.getHours());
-        assertEquals( 2, ts.getDays(),"Wrong value for days: " + ts.getDays());
+        assertEquals(0, ts.getSeconds(), "Wrong value for seconds: " + ts.getSeconds());
+        assertEquals(0, ts.getMinutes(), "Wrong value for minutes: " + ts.getMinutes());
+        assertEquals(0, ts.getHours(), "Wrong value for hours: " + ts.getHours());
+        assertEquals(2, ts.getDays(), "Wrong value for days: " + ts.getDays());
     }
 
     @Test
@@ -57,10 +57,10 @@ class TimeUtilsTest {
         long start = System.currentTimeMillis();
         long end = start + days(2) + hours(9) + minutes(4) + seconds(5);
         TimeSpan ts = TimeUtils.diff(start, end);
-        assertEquals( 5, ts.getSeconds(),"Wrong value for seconds: " + ts.getSeconds());
-        assertEquals( 4, ts.getMinutes(),"Wrong value for minutes: " + ts.getMinutes());
-        assertEquals( 9, ts.getHours(),"Wrong value for hours: " + ts.getHours());
-        assertEquals( 2, ts.getDays(),"Wrong value for days: " + ts.getDays());
+        assertEquals(5, ts.getSeconds(), "Wrong value for seconds: " + ts.getSeconds());
+        assertEquals(4, ts.getMinutes(), "Wrong value for minutes: " + ts.getMinutes());
+        assertEquals(9, ts.getHours(), "Wrong value for hours: " + ts.getHours());
+        assertEquals(2, ts.getDays(), "Wrong value for days: " + ts.getDays());
     }
 
     @Test
@@ -76,24 +76,42 @@ class TimeUtilsTest {
     @Test
     void testTruncateExtraMillis() {
         TimeSpan ts = TimeUtils.diff(0, seconds(3) + 520);
-        assertEquals( 3, ts.getSeconds(),"Wrong value for seconds: " + ts.getSeconds());
-        assertEquals( 0, ts.getMinutes(),"Wrong value for minutes: " + ts.getMinutes());
-        assertEquals( 0, ts.getHours(),"Wrong value for hours: " + ts.getHours());
-        assertEquals( 0, ts.getDays(),"Wrong value for days: " + ts.getDays());
+        assertEquals(3, ts.getSeconds(), "Wrong value for seconds: " + ts.getSeconds());
+        assertEquals(0, ts.getMinutes(), "Wrong value for minutes: " + ts.getMinutes());
+        assertEquals(0, ts.getHours(), "Wrong value for hours: " + ts.getHours());
+        assertEquals(0, ts.getDays(), "Wrong value for days: " + ts.getDays());
     }
 
     @Test
     void testZeroTimeSpan() {
         TimeSpan ts = TimeUtils.diff(days(4), days(4));
-        assertEquals( 0, ts.getSeconds(),"Wrong value for seconds: " + ts.getSeconds());
-        assertEquals( 0, ts.getMinutes(),"Wrong value for minutes: " + ts.getMinutes());
-        assertEquals( 0, ts.getHours(),"Wrong value for hours: " + ts.getHours());
-        assertEquals( 0, ts.getDays(),"Wrong value for days: " + ts.getDays());
+        assertEquals(0, ts.getSeconds(), "Wrong value for seconds: " + ts.getSeconds());
+        assertEquals(0, ts.getMinutes(), "Wrong value for minutes: " + ts.getMinutes());
+        assertEquals(0, ts.getHours(), "Wrong value for hours: " + ts.getHours());
+        assertEquals(0, ts.getDays(), "Wrong value for days: " + ts.getDays());
     }
 
     @Test
     void testFormatterCustom() {
         TimeSpan ts = TimeUtils.diff(0, days(4) + hours(2) + minutes(12));
         assertEquals("4:2:12:0", ts.format((t) -> t.getDays() + ":" + t.getHours() + ":" + t.getMinutes() + ":" + t.getSeconds()));
+    }
+
+    @Test
+    void testToTimeSpanWithZeroValue() {
+        TimeSpan timeSpan = TimeUtils.toTimeSpan(0);
+        assertEquals(0, timeSpan.getDays());
+        assertEquals(0, timeSpan.getHours());
+        assertEquals(0, timeSpan.getMinutes());
+        assertEquals(0, timeSpan.getSeconds());
+    }
+
+    @Test
+    void testToTimeSpanWithNonZeroValue() {
+        TimeSpan timeSpan = TimeUtils.toTimeSpan(days(3) + hours(2) + minutes(23) + seconds(13));
+        assertEquals(3, timeSpan.getDays());
+        assertEquals(2, timeSpan.getHours());
+        assertEquals(23, timeSpan.getMinutes());
+        assertEquals(13, timeSpan.getSeconds());
     }
 }
