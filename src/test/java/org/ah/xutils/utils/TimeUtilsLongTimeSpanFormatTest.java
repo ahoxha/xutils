@@ -1,20 +1,16 @@
 package org.ah.xutils.utils;
 
-import static org.ah.xutils.def.InMilliseconds.days;
-import static org.ah.xutils.def.InMilliseconds.hours;
-import static org.ah.xutils.def.InMilliseconds.minutes;
-import static org.ah.xutils.def.InMilliseconds.seconds;
-import static org.junit.Assert.assertEquals;
-
 import org.ah.xutils.def.TimeSpan;
 import org.ah.xutils.def.formatters.TimeSpanLongFormatter;
-import org.ah.xutils.utils.TimeUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class TimeUtilsLongTimeSpanFormatTest {
+import static org.ah.xutils.def.InMilliseconds.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class TimeUtilsLongTimeSpanFormatTest {
 
 	@Test
-	public void testSeconds() {
+	void testSeconds() {
 		long start = System.currentTimeMillis();
 		long end = start + seconds(5);
 		TimeSpan ts = TimeUtils.diff(start, end);
@@ -22,7 +18,7 @@ public class TimeUtilsLongTimeSpanFormatTest {
 	}
 
 	@Test
-	public void testMinutes() {
+	void testMinutes() {
 		long start = System.currentTimeMillis();
 		long end = start + minutes(4);
 		TimeSpan ts = TimeUtils.diff(start, end);
@@ -30,7 +26,7 @@ public class TimeUtilsLongTimeSpanFormatTest {
 	}
 
 	@Test
-	public void testHours() {
+	void testHours() {
 		long start = System.currentTimeMillis();
 		long end = start + hours(9);
 		TimeSpan ts = TimeUtils.diff(start, end);
@@ -38,7 +34,7 @@ public class TimeUtilsLongTimeSpanFormatTest {
 	}
 
 	@Test
-	public void testDays() {
+	void testDays() {
 		long start = System.currentTimeMillis();
 		long end = start + days(2);
 		TimeSpan ts = TimeUtils.diff(start, end);
@@ -46,7 +42,7 @@ public class TimeUtilsLongTimeSpanFormatTest {
 	}
 
 	@Test
-	public void testDaysHoursMinutesSeconds() {
+	void testDaysHoursMinutesSeconds() {
 		long start = System.currentTimeMillis();
 		long end = start + days(2) + hours(9) + minutes(4) + seconds(5);
 		TimeSpan ts = TimeUtils.diff(start, end);
@@ -54,7 +50,7 @@ public class TimeUtilsLongTimeSpanFormatTest {
 	}
 
 	@Test
-	public void testDefaultTimeSpanFormat() {
+	void testDefaultTimeSpanFormat() {
 		long start = System.currentTimeMillis();
 		long end = start + days(2) + hours(9) + minutes(4) + seconds(5);
 		TimeSpan ts = TimeUtils.diff(start, end);
@@ -62,7 +58,7 @@ public class TimeUtilsLongTimeSpanFormatTest {
 	}
 
 	@Test
-	public void testDefaultTimeSpanFormatZeroDays() {
+	void testDefaultTimeSpanFormatZeroDays() {
 		long start = System.currentTimeMillis();
 		long end = start + days(0) + hours(9) + minutes(4) + seconds(5);
 		TimeSpan ts = TimeUtils.diff(start, end);
@@ -70,7 +66,7 @@ public class TimeUtilsLongTimeSpanFormatTest {
 	}
 
 	@Test
-	public void testDefaultTimeSpanFormatZeroHours() {
+	void testDefaultTimeSpanFormatZeroHours() {
 		long start = System.currentTimeMillis();
 		long end = start + days(2) + hours(0) + minutes(4) + seconds(5);
 		TimeSpan ts = TimeUtils.diff(start, end);
@@ -78,7 +74,7 @@ public class TimeUtilsLongTimeSpanFormatTest {
 	}
 
 	@Test
-	public void testDefaultTimeSpanFormatZeroMinutes() {
+	void testDefaultTimeSpanFormatZeroMinutes() {
 		long start = System.currentTimeMillis();
 		long end = start + days(2) + hours(9) + minutes(0) + seconds(5);
 		TimeSpan ts = TimeUtils.diff(start, end);
@@ -86,7 +82,7 @@ public class TimeUtilsLongTimeSpanFormatTest {
 	}
 
 	@Test
-	public void testDefaultTimeSpanFormatZeroSeconds() {
+	void testDefaultTimeSpanFormatZeroSeconds() {
 		long start = System.currentTimeMillis();
 		long end = start + days(2) + hours(9) + minutes(4) + seconds(0);
 		TimeSpan ts = TimeUtils.diff(start, end);
