@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.ah.xutils.def.TimeSpan;
 import org.ah.xutils.def.formatters.TimeSpanLongAbbreviatedNoDelimFormatter;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class TimeUtilsLongAbrNoDelimTimeSpanFormatTest {
 	@Test
