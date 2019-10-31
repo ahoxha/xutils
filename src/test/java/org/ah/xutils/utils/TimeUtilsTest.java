@@ -108,10 +108,56 @@ class TimeUtilsTest {
 
     @Test
     void testToTimeSpanWithNonZeroValue() {
-        TimeSpan timeSpan = TimeUtils.toTimeSpan(days(3) + hours(2) + minutes(23) + seconds(13));
+        long millis = days(3) + hours(2) + minutes(23) + seconds(13);
+        TimeSpan timeSpan = TimeUtils.toTimeSpan(millis);
         assertEquals(3, timeSpan.getDays());
         assertEquals(2, timeSpan.getHours());
         assertEquals(23, timeSpan.getMinutes());
         assertEquals(13, timeSpan.getSeconds());
+    }
+
+    @Test
+    void testToTimeSpanWithNonZeroSeconds() {
+        TimeSpan timeSpan = TimeUtils.toTimeSpan(seconds(34));
+        assertEquals(0, timeSpan.getDays());
+        assertEquals(0, timeSpan.getHours());
+        assertEquals(0, timeSpan.getMinutes());
+        assertEquals(34, timeSpan.getSeconds());
+    }
+
+    @Test
+    void testToTimeSpanWithNonZeroMinutes() {
+        TimeSpan timeSpan = TimeUtils.toTimeSpan(minutes(12));
+        assertEquals(0, timeSpan.getDays());
+        assertEquals(0, timeSpan.getHours());
+        assertEquals(12, timeSpan.getMinutes());
+        assertEquals(0, timeSpan.getSeconds());
+    }
+
+    @Test
+    void testToTimeSpanWithNonZeroHours() {
+        TimeSpan timeSpan = TimeUtils.toTimeSpan(hours(12));
+        assertEquals(0, timeSpan.getDays());
+        assertEquals(12, timeSpan.getHours());
+        assertEquals(0, timeSpan.getMinutes());
+        assertEquals(0, timeSpan.getSeconds());
+    }
+
+    @Test
+    void testToTimeSpanWithNonZeroDays() {
+        TimeSpan timeSpan = TimeUtils.toTimeSpan(days(8));
+        assertEquals(8, timeSpan.getDays());
+        assertEquals(0, timeSpan.getHours());
+        assertEquals(0, timeSpan.getMinutes());
+        assertEquals(0, timeSpan.getSeconds());
+    }
+
+    @Test
+    void testToTimeSpanWithNonZeroHoursMoreThanOneDay() {
+        TimeSpan timeSpan = TimeUtils.toTimeSpan(hours(27));
+        assertEquals(1, timeSpan.getDays());
+        assertEquals(3, timeSpan.getHours());
+        assertEquals(0, timeSpan.getMinutes());
+        assertEquals(0, timeSpan.getSeconds());
     }
 }
