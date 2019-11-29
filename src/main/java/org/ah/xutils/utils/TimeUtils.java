@@ -4,9 +4,7 @@ import org.ah.xutils.def.TimeSpan;
 
 public final class TimeUtils {
 
-    private TimeUtils() {
-        // prevent instantiation
-    }
+    private TimeUtils() {}
 
     /**
      * Find the time span between start and end.
