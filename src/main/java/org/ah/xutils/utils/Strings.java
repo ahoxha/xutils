@@ -8,9 +8,9 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class StringUtils {
+public final class Strings {
 
-	private StringUtils() {
+	private Strings() {
 		// prevent instantiation
 	}
 
