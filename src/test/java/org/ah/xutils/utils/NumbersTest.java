@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 
-class NumberUtilsTest {
+class NumbersTest {
 
 	static Collection<Double[]> parameters() {
 		return Arrays.asList(new Double[][] {
@@ -24,6 +24,6 @@ class NumberUtilsTest {
 	@ParameterizedTest
 	@MethodSource("parameters")
 	void testRoundOff(double input, double expected) {
-		Assertions.assertEquals(expected, NumberUtils.roundOff(input,2), 0.001);
+		Assertions.assertEquals(expected, Numbers.roundOff(input,2), 0.001);
 	}
 }

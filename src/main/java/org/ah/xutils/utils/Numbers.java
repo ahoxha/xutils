@@ -6,8 +6,8 @@ package org.ah.xutils.utils;
  * @author armend
  *
  */
-public final class NumberUtils {
-	private NumberUtils() {
+public final class Numbers {
+	private Numbers() {
 		// prevent instantiation
 	}
 
