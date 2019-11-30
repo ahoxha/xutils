@@ -7,9 +7,7 @@ package org.ah.xutils.utils;
  *
  */
 public final class Numbers {
-	private Numbers() {
-		// prevent instantiation
-	}
+	private Numbers() { }
 
 	/**
 	 * Rounds a decimal point number to a certain number of digits, as indicated
