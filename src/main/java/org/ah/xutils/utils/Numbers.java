@@ -33,6 +33,7 @@ public final class Numbers {
     }
 
     private static void populateBasics() {
+        basics.put(0, "");
         basics.put(1, "one");
         basics.put(2, "two");
         basics.put(3, "three");
@@ -82,27 +83,27 @@ public final class Numbers {
      */
     public static String toWords(int number, String delimiter) {
         String res = "N/A";
-        if (number <= 20) {
-            res = basics.get(number) == null ? "" : basics.get(number);
+        if (number >= 0 && number <= 20) {
+            res = basics.get(number);
         } else if (number < 100) {
-            int tenth = (number / 10) * 10;
-            res = tens.get(tenth);
-            int ones = number - tenth;
+            int tens = (number / 10) * 10;
+            res = Numbers.tens.get(tens);
+            int ones = number - tens;
             if (ones > 0) {
                 res += delimiter + basics.get(ones);
             }
         } else if (number < 1000) {
-            int hundredth = number / 100;
-            res = basics.get(hundredth) + delimiter + hundred;
-            int rest = number - hundredth * 100;
+            int hundreds = number / 100;
+            res = basics.get(hundreds) + delimiter + hundred;
+            int rest = number - hundreds * 100;
             if (rest < 20 && rest > 0) {
                 res += delimiter + "and" + delimiter + basics.get(rest);
             } else {
-                int tenth = ((number - hundredth * 100) / 10) * 10;
+                int tenth = ((number - hundreds * 100) / 10) * 10;
                 if (tenth > 0) {
                     res += delimiter + "and" + delimiter + tens.get(tenth);
                 }
-                int basic = number - hundredth * 100 - tenth;
+                int basic = number - hundreds * 100 - tenth;
                 if (basic > 0) {
                     res += delimiter + basics.get(basic);
                 }
