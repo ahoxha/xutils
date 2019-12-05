@@ -1,60 +1,11 @@
 package org.ah.xutils.utils;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Provides utility methods to manipulate numbers.
  *
  * @author armend
  */
 public final class Numbers {
-    static Map<Integer, String> basics = new HashMap<>();
-    static Map<Integer, String> tenners = new HashMap<>();
-    static String hundred = "hundred";
-    static String thousand = "thousand";
-    static String million = "million";
-
-    static {
-        populateBasics();
-        populateTens();
-    }
-
-    private static void populateTens() {
-        tenners.put(10, "ten");
-        tenners.put(20, "twenty");
-        tenners.put(30, "thirty");
-        tenners.put(40, "forty");
-        tenners.put(50, "fifty");
-        tenners.put(60, "sixty");
-        tenners.put(70, "seventy");
-        tenners.put(80, "eighty");
-        tenners.put(90, "ninety");
-    }
-
-    private static void populateBasics() {
-        basics.put(0, "");
-        basics.put(1, "one");
-        basics.put(2, "two");
-        basics.put(3, "three");
-        basics.put(4, "four");
-        basics.put(5, "five");
-        basics.put(6, "six");
-        basics.put(7, "seven");
-        basics.put(8, "eight");
-        basics.put(9, "nine");
-        basics.put(10, "ten");
-        basics.put(11, "eleven");
-        basics.put(12, "twelve");
-        basics.put(13, "thirteen");
-        basics.put(14, "fourteen");
-        basics.put(15, "fifteen");
-        basics.put(16, "sixteen");
-        basics.put(17, "seventeen");
-        basics.put(18, "eighteen");
-        basics.put(19, "nineteen");
-        basics.put(20, "twenty");
-    }
 
     private Numbers() {
     }
@@ -84,37 +35,39 @@ public final class Numbers {
     public static String toWords(int number, String delimiter) {
         String numInWords = "N/A";
         if (number >= 0 && number <= 20) {
-            numInWords = basics.get(number);
+            numInWords = NumberAsWord.get(number);
         } else if (number < 100) {
             int tens = (number / 10) * 10;
-            numInWords = tenners.get(tens);
+            numInWords = NumberAsWord.get(tens);
             int ones = number - tens;
             if (ones > 0) {
-                numInWords += delimiter + basics.get(ones);
+                numInWords += delimiter + NumberAsWord.get(ones);
             }
         } else if (number < 1000) {
             int hundreds = number / 100;
-            numInWords = basics.get(hundreds) + delimiter + hundred;
+            numInWords = NumberAsWord.get(hundreds) + delimiter + NumberAsWord.get(100);
             int rest = number - hundreds * 100;
             if (rest < 20 && rest > 0) {
-                numInWords += delimiter + "and" + delimiter + basics.get(rest);
+                numInWords += delimiter + "and" + delimiter + NumberAsWord.get(rest);
             } else {
                 int tenth = ((number - hundreds * 100) / 10) * 10;
                 if (tenth > 0) {
-                    numInWords += delimiter + "and" + delimiter + tenners.get(tenth);
+                    numInWords += delimiter + "and" + delimiter + NumberAsWord.get(tenth);
                 }
                 int basic = number - hundreds * 100 - tenth;
                 if (basic > 0) {
-                    numInWords += delimiter + basics.get(basic);
+                    numInWords += delimiter + NumberAsWord.get(basic);
                 }
             }
         } else if (number < 1_000_000) {
             int thousands = number / 1000;
-            numInWords = toWords(thousands, delimiter) + delimiter + thousand + (number - thousands * 1000 > 0 ? delimiter + "and" + delimiter : "")
+            numInWords = toWords(thousands, delimiter) + delimiter + NumberAsWord.get(1000) +
+                    (number - thousands * 1000 > 0 ? delimiter + "and" + delimiter : "")
                     + toWords(number - thousands * 1000, delimiter);
         } else if (number < 1_000_000_000) {
             int millions = number / 1000000;
-            numInWords = toWords(millions, delimiter) + delimiter + million + (number - millions * 1000000 > 0 ? delimiter + "and" + delimiter : "")
+            numInWords = toWords(millions, delimiter) + delimiter + NumberAsWord.get(1_000_000) +
+                    (number - millions * 1000000 > 0 ? delimiter + "and" + delimiter : "")
                     + toWords(number - millions * 1000000, delimiter);
         }
         return numInWords;
