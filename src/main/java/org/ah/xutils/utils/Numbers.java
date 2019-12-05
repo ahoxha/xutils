@@ -65,10 +65,10 @@ public final class Numbers {
                     (number - thousands * 1000 > 0 ? delimiter + "and" + delimiter : "")
                     + toWords(number - thousands * 1000, delimiter);
         } else if (number < 1_000_000_000) {
-            int millions = number / 1000000;
+            int millions = number / 1_000_000;
             numInWords = toWords(millions, delimiter) + delimiter + NumberAsWord.get(1_000_000) +
-                    (number - millions * 1000000 > 0 ? delimiter + "and" + delimiter : "")
-                    + toWords(number - millions * 1000000, delimiter);
+                    (number - millions * 1_000_000 > 0 ? delimiter + "and" + delimiter : "")
+                    + toWords(number - millions * 1_000_000, delimiter);
         }
         return numInWords;
     }
