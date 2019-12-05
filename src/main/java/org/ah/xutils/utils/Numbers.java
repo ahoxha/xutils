@@ -82,41 +82,41 @@ public final class Numbers {
      * @param delimiter A string that is put between words, usually a space, but it can be any string. Examples: 'twenty one', 'twenty-one', 'twenty_one'.
      */
     public static String toWords(int number, String delimiter) {
-        String res = "N/A";
+        String numInWords = "N/A";
         if (number >= 0 && number <= 20) {
-            res = basics.get(number);
+            numInWords = basics.get(number);
         } else if (number < 100) {
             int tens = (number / 10) * 10;
-            res = tenners.get(tens);
+            numInWords = tenners.get(tens);
             int ones = number - tens;
             if (ones > 0) {
-                res += delimiter + basics.get(ones);
+                numInWords += delimiter + basics.get(ones);
             }
         } else if (number < 1000) {
             int hundreds = number / 100;
-            res = basics.get(hundreds) + delimiter + hundred;
+            numInWords = basics.get(hundreds) + delimiter + hundred;
             int rest = number - hundreds * 100;
             if (rest < 20 && rest > 0) {
-                res += delimiter + "and" + delimiter + basics.get(rest);
+                numInWords += delimiter + "and" + delimiter + basics.get(rest);
             } else {
                 int tenth = ((number - hundreds * 100) / 10) * 10;
                 if (tenth > 0) {
-                    res += delimiter + "and" + delimiter + tenners.get(tenth);
+                    numInWords += delimiter + "and" + delimiter + tenners.get(tenth);
                 }
                 int basic = number - hundreds * 100 - tenth;
                 if (basic > 0) {
-                    res += delimiter + basics.get(basic);
+                    numInWords += delimiter + basics.get(basic);
                 }
             }
         } else if (number < 1_000_000) {
             int thousands = number / 1000;
-            res = toWords(thousands, delimiter) + delimiter + thousand + (number - thousands * 1000 > 0 ? delimiter + "and" + delimiter : "")
+            numInWords = toWords(thousands, delimiter) + delimiter + thousand + (number - thousands * 1000 > 0 ? delimiter + "and" + delimiter : "")
                     + toWords(number - thousands * 1000, delimiter);
         } else if (number < 1_000_000_000) {
             int millions = number / 1000000;
-            res = toWords(millions, delimiter) + delimiter + million + (number - millions * 1000000 > 0 ? delimiter + "and" + delimiter : "")
+            numInWords = toWords(millions, delimiter) + delimiter + million + (number - millions * 1000000 > 0 ? delimiter + "and" + delimiter : "")
                     + toWords(number - millions * 1000000, delimiter);
         }
-        return res;
+        return numInWords;
     }
 }
