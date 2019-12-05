@@ -10,9 +10,7 @@ import java.util.regex.Pattern;
 
 public final class Strings {
 
-	private Strings() {
-		// prevent instantiation
-	}
+	private Strings() { }
 
 	public static String decodeBase64(String encodedString) {
 		Decoder dec = Base64.getDecoder();
