@@ -95,7 +95,7 @@ public final class Numbers {
             int hundredth = number / 100;
             res = basics.get(hundredth) + delimiter + hundred;
             int rest = number - hundredth * 100;
-            if (rest < 20 & rest > 0) {
+            if (rest < 20 && rest > 0) {
                 res += delimiter + "and" + delimiter + basics.get(rest);
             } else {
                 int tenth = ((number - hundredth * 100) / 10) * 10;
