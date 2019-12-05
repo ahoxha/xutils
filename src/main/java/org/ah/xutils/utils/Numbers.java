@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public final class Numbers {
     static Map<Integer, String> basics = new HashMap<>();
-    static Map<Integer, String> tens = new HashMap<>();
+    static Map<Integer, String> tenners = new HashMap<>();
     static String hundred = "hundred";
     static String thousand = "thousand";
     static String million = "million";
@@ -21,15 +21,15 @@ public final class Numbers {
     }
 
     private static void populateTens() {
-        tens.put(10, "ten");
-        tens.put(20, "twenty");
-        tens.put(30, "thirty");
-        tens.put(40, "forty");
-        tens.put(50, "fifty");
-        tens.put(60, "sixty");
-        tens.put(70, "seventy");
-        tens.put(80, "eighty");
-        tens.put(90, "ninety");
+        tenners.put(10, "ten");
+        tenners.put(20, "twenty");
+        tenners.put(30, "thirty");
+        tenners.put(40, "forty");
+        tenners.put(50, "fifty");
+        tenners.put(60, "sixty");
+        tenners.put(70, "seventy");
+        tenners.put(80, "eighty");
+        tenners.put(90, "ninety");
     }
 
     private static void populateBasics() {
@@ -87,7 +87,7 @@ public final class Numbers {
             res = basics.get(number);
         } else if (number < 100) {
             int tens = (number / 10) * 10;
-            res = Numbers.tens.get(tens);
+            res = tenners.get(tens);
             int ones = number - tens;
             if (ones > 0) {
                 res += delimiter + basics.get(ones);
@@ -101,7 +101,7 @@ public final class Numbers {
             } else {
                 int tenth = ((number - hundreds * 100) / 10) * 10;
                 if (tenth > 0) {
-                    res += delimiter + "and" + delimiter + tens.get(tenth);
+                    res += delimiter + "and" + delimiter + tenners.get(tenth);
                 }
                 int basic = number - hundreds * 100 - tenth;
                 if (basic > 0) {
