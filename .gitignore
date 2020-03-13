@@ -11,3 +11,6 @@ build/
 *.ipr
 *.iws
 out/
+
+#jenv file
+.java-version
