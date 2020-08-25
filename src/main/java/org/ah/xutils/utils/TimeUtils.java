@@ -15,7 +15,7 @@ public final class TimeUtils {
      * minutes and seconds (any leftover milliseconds are truncated).
      * @throws IllegalArgumentException If end time is smaller than start time.
      */
-    public static TimeSpan diff(long start, long end) throws IllegalArgumentException {
+    public static TimeSpan diff(long start, long end) {
         if (start < 0 || end < 0) {
             throw new IllegalArgumentException("Negative values are not allowed");
         }

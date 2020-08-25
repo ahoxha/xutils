@@ -2,6 +2,7 @@ package org.ah.xutils.utils;
 
 import org.junit.jupiter.api.Test;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.nio.charset.StandardCharsets;
@@ -21,7 +22,15 @@ class StringsTest {
     void testEncodeToBase64StringWithNonEmptyString() {
         String plain = "cosmic microwave background radiation";
         Encoder enc = Base64.getEncoder();
-        assertEquals(enc.encodeToString(plain.getBytes(StandardCharsets.UTF_8)), Strings.encodeToBase64String(plain));
+        assertEquals(enc.encodeToString(plain.getBytes(UTF_8)), Strings.encodeToBase64String(plain));
+    }
+
+    @Test
+    void testEncodeToBase64StringFromBytes() {
+        byte[] bytes = "test".getBytes(UTF_8);
+        Encoder enc = Base64.getEncoder();
+
+        assertEquals(enc.encodeToString(bytes), Strings.encodeToBase64String(bytes));
     }
 
     @Test

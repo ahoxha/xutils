@@ -7,6 +7,8 @@ import static org.ah.xutils.def.InMilliseconds.hours;
 import static org.ah.xutils.def.InMilliseconds.minutes;
 import static org.ah.xutils.def.InMilliseconds.seconds;
 
+import javax.annotation.Nonnull;
+
 class TimeSpanImpl implements TimeSpan {
 
 	private long days;
@@ -55,6 +57,7 @@ class TimeSpanImpl implements TimeSpan {
 	}
 
 	@Override
+	@Nonnull
 	public String format(Formatter formatter) {
 		return formatter.format(this);
 	}
