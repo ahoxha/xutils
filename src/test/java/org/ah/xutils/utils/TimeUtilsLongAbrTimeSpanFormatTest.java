@@ -12,7 +12,9 @@ class TimeUtilsLongAbrTimeSpanFormatTest {
     void testSeconds() {
         long start = System.currentTimeMillis();
         long end = start + seconds(5);
+
         TimeSpan ts = TimeUtils.diff(start, end);
+
         assertEquals("0 d, 0 h, 0 m, 5 s", ts.format(new TimeSpanLongAbbreviatedFormatter()));
     }
 
@@ -20,7 +22,9 @@ class TimeUtilsLongAbrTimeSpanFormatTest {
     void testMinutes() {
         long start = System.currentTimeMillis();
         long end = start + minutes(12);
+
         TimeSpan ts = TimeUtils.diff(start, end);
+
         assertEquals("0 d, 0 h, 12 m, 0 s", ts.format(new TimeSpanLongAbbreviatedFormatter()));
     }
 
@@ -28,7 +32,9 @@ class TimeUtilsLongAbrTimeSpanFormatTest {
     void testHours() {
         long start = System.currentTimeMillis();
         long end = start + hours(10);
+
         TimeSpan ts = TimeUtils.diff(start, end);
+
         assertEquals("0 d, 10 h, 0 m, 0 s", ts.format(new TimeSpanLongAbbreviatedFormatter()));
     }
 
@@ -36,7 +42,9 @@ class TimeUtilsLongAbrTimeSpanFormatTest {
     void testDays() {
         long start = System.currentTimeMillis();
         long end = start + days(12);
+
         TimeSpan ts = TimeUtils.diff(start, end);
+
         assertEquals("12 d, 0 h, 0 m, 0 s", ts.format(new TimeSpanLongAbbreviatedFormatter()));
     }
 
@@ -44,7 +52,9 @@ class TimeUtilsLongAbrTimeSpanFormatTest {
     void testDaysHoursMinutesSeconds() {
         long start = System.currentTimeMillis();
         long end = start + days(2) + hours(9) + minutes(4) + seconds(5);
+
         TimeSpan ts = TimeUtils.diff(start, end);
+
         assertEquals("2 d, 9 h, 4 m, 5 s", ts.format(new TimeSpanLongAbbreviatedFormatter()));
     }
 

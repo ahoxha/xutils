@@ -7,6 +7,8 @@ package org.ah.xutils.utils;
  */
 public final class Numbers {
 
+    private static final String AND = "and";
+
     private Numbers() {
     }
 
@@ -57,18 +59,16 @@ public final class Numbers {
     private static String toWordsLessThanBillion(int number, String delimiter) {
         String result;
         int millions = number / 1_000_000;
-        result = toWords(millions, delimiter) + delimiter + NumberAsWord.get(1_000_000) +
-                (number - millions * 1_000_000 > 0 ? delimiter + "and" + delimiter : "")
-                + toWords(number - millions * 1_000_000, delimiter);
+        result = toWords(millions, delimiter) + delimiter + NumberAsWord.get(1_000_000) + (number - millions * 1_000_000 > 0 ? delimiter + AND + delimiter : "") + toWords(
+                number - millions * 1_000_000, delimiter);
         return result;
     }
 
     private static String toWordsLessThanMillion(int number, String delimiter) {
         String result;
         int thousands = number / 1000;
-        result = toWords(thousands, delimiter) + delimiter + NumberAsWord.get(1000) +
-                (number - thousands * 1000 > 0 ? delimiter + "and" + delimiter : "")
-                + toWords(number - thousands * 1000, delimiter);
+        result = toWords(thousands, delimiter) + delimiter + NumberAsWord.get(1000) + (number - thousands * 1000 > 0 ? delimiter + AND + delimiter : "") + toWords(
+                number - thousands * 1000, delimiter);
         return result;
     }
 
@@ -78,11 +78,11 @@ public final class Numbers {
         result = NumberAsWord.get(hundreds) + delimiter + NumberAsWord.get(100);
         int rest = number - hundreds * 100;
         if (rest < 20 && rest > 0) {
-            result += delimiter + "and" + delimiter + NumberAsWord.get(rest);
+            result += delimiter + AND + delimiter + NumberAsWord.get(rest);
         } else {
             int tenth = ((number - hundreds * 100) / 10) * 10;
             if (tenth > 0) {
-                result += delimiter + "and" + delimiter + NumberAsWord.get(tenth);
+                result += delimiter + AND + delimiter + NumberAsWord.get(tenth);
             }
             int basic = number - hundreds * 100 - tenth;
             if (basic > 0) {

@@ -8,18 +8,13 @@ import org.ah.xutils.def.TimeSpan;
  * but there is no delimiter in between:
  * <p>
  * 4d 0h 0m 5s
- * 
- * @author armend
  *
+ * @author armend
  */
 public class TimeSpanLongAbbreviatedNoDelimFormatter implements Formatter {
-	@Override
-	public String format(TimeSpan ts) {
-		return new StringBuilder()
-				.append(ts.getDays()).append("d ")
-				.append(ts.getHours()).append("h ")
-				.append(ts.getMinutes()).append("m ")
-				.append(ts.getSeconds()).append("s")
-				.toString();
-	}
+    @Override
+    public String format(TimeSpan ts) {
+        return new StringBuilder().append(ts.getDays()).append("d ").append(ts.getHours()).append("h ").append(ts.getMinutes()).append("m ").append(ts.getSeconds()).append("s")
+                .toString();
+    }
 }
