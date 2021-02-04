@@ -7,6 +7,12 @@ package org.ah.xutils.def;
  * @author armend
  */
 public final class InMilliseconds {
+
+    private static final int MILLISECONDS_IN_ONE_DAY = 86400000;
+    private static final int MILLISECONDS_IN_ONE_HOUR = 3600000;
+    private static final int MILLISECONDS_IN_ONE_MINUTE = 60000;
+    private static final int MILLISECONDS_IN_ONE_SECOND = 1000;
+
     private InMilliseconds() {
         // Prevent instantiation
     }
@@ -18,7 +24,7 @@ public final class InMilliseconds {
      * @return Number of milliseconds in {@code value} days.
      */
     public static long days(long value) {
-        return value * 86400000;// 24 * 60 * 60 * 1000;
+        return value * MILLISECONDS_IN_ONE_DAY;
     }
 
     /**
@@ -28,7 +34,7 @@ public final class InMilliseconds {
      * @return Number of milliseconds in {@code value} hours.
      */
     public static long hours(long value) {
-        return value * 3600000;// 60 * 60 * 1000;
+        return value * MILLISECONDS_IN_ONE_HOUR;
     }
 
     /**
@@ -38,7 +44,7 @@ public final class InMilliseconds {
      * @return Number of milliseconds in {@code value} minutes.
      */
     public static long minutes(long value) {
-        return value * 60000;// 60 * 1000;
+        return value * MILLISECONDS_IN_ONE_MINUTE;
     }
 
     /**
@@ -48,6 +54,6 @@ public final class InMilliseconds {
      * @return Number of milliseconds in {@code value} seconds.
      */
     public static long seconds(long value) {
-        return value * 1000;
+        return value * MILLISECONDS_IN_ONE_SECOND;
     }
 }

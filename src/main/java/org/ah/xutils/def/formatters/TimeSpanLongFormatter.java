@@ -13,7 +13,6 @@ public class TimeSpanLongFormatter implements Formatter {
 
     @Override
     public String format(TimeSpan ts) {
-        return new StringBuilder().append(ts.getDays()).append(" days, ").append(ts.getHours()).append(" hours, ").append(ts.getMinutes()).append(" minutes, ")
-                .append(ts.getSeconds()).append(" seconds").toString();
+        return ts.getDays() + " days, " + ts.getHours() + " hours, " + ts.getMinutes() + " minutes, " + ts.getSeconds() + " seconds";
     }
 }
