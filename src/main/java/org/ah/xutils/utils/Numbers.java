@@ -1,5 +1,8 @@
 package org.ah.xutils.utils;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  * Provides utility methods to manipulate numbers.
  *
@@ -24,8 +27,7 @@ public final class Numbers {
      * {@code decimals} digits.
      */
     public static double roundOff(double d, int decimals) {
-        double p = Math.pow(10, decimals);
-        return Math.round(d * p) / p;
+        return BigDecimal.valueOf(d).setScale(decimals, RoundingMode.HALF_UP).doubleValue();
     }
 
     /**
