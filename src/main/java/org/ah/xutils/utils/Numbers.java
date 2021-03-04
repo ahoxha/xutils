@@ -26,7 +26,7 @@ public final class Numbers {
      * @return A {@code double} value of {@code d} rounded off to
      * {@code decimals} digits.
      */
-    public static double roundOff(double d, int decimals) {
+    public static double round(double d, int decimals) {
         return BigDecimal.valueOf(d).setScale(decimals, RoundingMode.HALF_UP).doubleValue();
     }
 
