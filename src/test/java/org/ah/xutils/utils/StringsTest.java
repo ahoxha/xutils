@@ -134,24 +134,24 @@ class StringsTest {
     }
 
     public static class ArgumentsUtil {
-        private final List<Object> objects;
+        private final List<String> objects;
 
-        private ArgumentsUtil(List<Object> ob) {
+        private ArgumentsUtil(List<String> ob) {
             this.objects = ob;
         }
 
-        public static ArgumentsUtil given(Object obj) {
-            List<Object> list = new ArrayList<>();
+        public static ArgumentsUtil given(String obj) {
+            List<String> list = new ArrayList<>();
             list.add(obj);
             return new ArgumentsUtil(list);
         }
 
-        public ArgumentsUtil withPrefix(Object obj) {
+        public ArgumentsUtil withPrefix(String obj) {
             objects.add(obj);
             return this;
         }
 
-        public Arguments thenExpect(Object result) {
+        public Arguments thenExpect(String result) {
             objects.add(result);
             return Arguments.of(objects.toArray());
         }
