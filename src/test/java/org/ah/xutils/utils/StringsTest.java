@@ -5,7 +5,6 @@ import static org.ah.xutils.utils.StringsTest.ArgumentsUtil.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.Base64.Encoder;
 import java.util.List;
@@ -95,7 +94,7 @@ class StringsTest {
                 given("tESt") //
                         .withPrefix("") //
                         .thenExpect("Test"), //
-                given((Object) null) //
+                given(null) //
                         .withPrefix("") //
                         .thenExpect(""), //
                 given("") //
@@ -104,7 +103,7 @@ class StringsTest {
                 given("") //
                         .withPrefix("add") //
                         .thenExpect(""), //
-                given((Object) null) //
+                given(null) //
                         .withPrefix(null) //
                         .thenExpect(""), //
                 given("test") //
@@ -141,8 +140,10 @@ class StringsTest {
             this.objects = ob;
         }
 
-        public static ArgumentsUtil given(Object... args) {
-            return new ArgumentsUtil(new ArrayList<>(Arrays.asList(args)));
+        public static ArgumentsUtil given(Object obj) {
+            List<Object> list = new ArrayList<>();
+            list.add(obj);
+            return new ArgumentsUtil(list);
         }
 
         public ArgumentsUtil withPrefix(Object obj) {
