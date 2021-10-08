@@ -59,19 +59,21 @@ public final class Numbers {
     }
 
     private static String toWordsLessThanBillion(int number, String delimiter) {
-        String result;
         int millions = number / 1_000_000;
-        result = toWords(millions, delimiter) + delimiter + NumberAsWord.get(1_000_000) + (number - millions * 1_000_000 > 0 ? delimiter + AND + delimiter : "") + toWords(
-                number - millions * 1_000_000, delimiter);
-        return result;
+        return toWords(millions, delimiter) + //
+                delimiter + //
+                NumberAsWord.get(1_000_000) + //
+                (number - millions * 1_000_000 > 0 ? delimiter + AND + delimiter : "") + //
+                toWords(number - millions * 1_000_000, delimiter);
     }
 
     private static String toWordsLessThanMillion(int number, String delimiter) {
-        String result;
         int thousands = number / 1000;
-        result = toWords(thousands, delimiter) + delimiter + NumberAsWord.get(1000) + (number - thousands * 1000 > 0 ? delimiter + AND + delimiter : "") + toWords(
-                number - thousands * 1000, delimiter);
-        return result;
+        return toWords(thousands, delimiter) + //
+                delimiter + //
+                NumberAsWord.get(1000) + //
+                (number - thousands * 1000 > 0 ? delimiter + AND + delimiter : "") + //
+                toWords(number - thousands * 1000, delimiter);
     }
 
     private static String toWordsLessThanThousand(int number, String delimiter) {
