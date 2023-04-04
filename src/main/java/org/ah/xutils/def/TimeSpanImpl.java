@@ -1,13 +1,13 @@
 package org.ah.xutils.def;
 
-import org.ah.xutils.def.formatters.Formatter;
-
 import static org.ah.xutils.def.InMilliseconds.days;
 import static org.ah.xutils.def.InMilliseconds.hours;
 import static org.ah.xutils.def.InMilliseconds.minutes;
 import static org.ah.xutils.def.InMilliseconds.seconds;
 
 import javax.annotation.Nonnull;
+
+import org.ah.xutils.def.formatters.Formatter;
 
 class TimeSpanImpl implements TimeSpan {
 
@@ -17,19 +17,29 @@ class TimeSpanImpl implements TimeSpan {
     private long seconds;
 
     private TimeSpanImpl(long millis) {
+        long remaining = calculateDays(millis);
+        remaining = calculateHours(remaining);
+        remaining = calculateMinutes(remaining);
+        calculateSeconds(remaining);
+    }
+
+    private long calculateDays(long millis) {
         days = millis / days(1);
-        millis = millis - days(days);
-        if (millis > 0) {
-            hours = millis / hours(1);
-            millis = millis - hours(hours);
-            if (millis > 0) {
-                minutes = millis / minutes(1);
-                millis = millis - minutes(minutes);
-                if (millis > 0) {
-                    seconds = millis / seconds(1);
-                }
-            }
-        }
+        return millis - days(days);
+    }
+
+    private long calculateHours(long millis) {
+        hours = millis / hours(1);
+        return millis - hours(hours);
+    }
+
+    private long calculateMinutes(long millis) {
+        minutes = millis / minutes(1);
+        return millis - minutes(minutes);
+    }
+
+    private void calculateSeconds(long millis) {
+        seconds = millis / seconds(1);
     }
 
     public static TimeSpan create(long millis) {
@@ -61,5 +71,4 @@ class TimeSpanImpl implements TimeSpan {
     public String format(Formatter formatter) {
         return formatter.format(this);
     }
-
 }
