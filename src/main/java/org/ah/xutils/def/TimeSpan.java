@@ -59,6 +59,6 @@ public interface TimeSpan {
      * @return A {@link TimeSpan} object that represents a period of time.
      */
     static TimeSpan create(long milliseconds) {
-        return TimeSpanImpl.create(milliseconds);
+        return new TimeSpanImpl(milliseconds);
     }
 }

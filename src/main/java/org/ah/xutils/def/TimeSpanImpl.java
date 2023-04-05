@@ -16,7 +16,7 @@ class TimeSpanImpl implements TimeSpan {
     private long minutes;
     private long seconds;
 
-    private TimeSpanImpl(long millis) {
+    TimeSpanImpl(long millis) {
         long remaining = calculateDays(millis);
         remaining = calculateHours(remaining);
         remaining = calculateMinutes(remaining);
@@ -40,10 +40,6 @@ class TimeSpanImpl implements TimeSpan {
 
     private void calculateSeconds(long millis) {
         seconds = millis / seconds(1);
-    }
-
-    public static TimeSpan create(long millis) {
-        return new TimeSpanImpl(millis);
     }
 
     @Override
