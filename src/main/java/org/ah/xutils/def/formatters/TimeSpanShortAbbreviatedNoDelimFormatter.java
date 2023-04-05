@@ -23,9 +23,7 @@ public class TimeSpanShortAbbreviatedNoDelimFormatter implements Formatter {
         if (ts.getSeconds() > 0) {
             sb.append(ts.getSeconds()).append("s");
         }
-        if (sb.lastIndexOf(" ") == sb.length() - 1) {
-            sb.replace(sb.length() - 1, sb.length(), "");
-        }
-        return sb.toString();
+
+        return sb.toString().trim();
     }
 }
