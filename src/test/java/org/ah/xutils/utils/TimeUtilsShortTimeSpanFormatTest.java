@@ -1,9 +1,9 @@
 package org.ah.xutils.utils;
 
-import static org.ah.xutils.def.InMilliseconds.days;
-import static org.ah.xutils.def.InMilliseconds.hours;
-import static org.ah.xutils.def.InMilliseconds.minutes;
-import static org.ah.xutils.def.InMilliseconds.seconds;
+import static org.ah.xutils.def.MillisecondsUtils.daysToMillis;
+import static org.ah.xutils.def.MillisecondsUtils.hoursToMillis;
+import static org.ah.xutils.def.MillisecondsUtils.minutesToMillis;
+import static org.ah.xutils.def.MillisecondsUtils.secondsToMillis;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.ah.xutils.def.TimeSpan;
@@ -15,7 +15,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test1() {
         long start = System.currentTimeMillis();
-        long end = start + seconds(5);
+        long end = start + secondsToMillis(5);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -25,7 +25,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test2() {
         long start = System.currentTimeMillis();
-        long end = start + minutes(3);
+        long end = start + minutesToMillis(3);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -35,7 +35,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test3() {
         long start = System.currentTimeMillis();
-        long end = start + minutes(3) + seconds(5);
+        long end = start + minutesToMillis(3) + secondsToMillis(5);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -45,7 +45,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test4() {
         long start = System.currentTimeMillis();
-        long end = start + hours(12);
+        long end = start + hoursToMillis(12);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -55,7 +55,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test5() {
         long start = System.currentTimeMillis();
-        long end = start + hours(12) + minutes(8);
+        long end = start + hoursToMillis(12) + minutesToMillis(8);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -65,7 +65,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test6() {
         long start = System.currentTimeMillis();
-        long end = start + hours(12) + seconds(6);
+        long end = start + hoursToMillis(12) + secondsToMillis(6);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -75,7 +75,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test7() {
         long start = System.currentTimeMillis();
-        long end = start + hours(12) + minutes(8) + seconds(2);
+        long end = start + hoursToMillis(12) + minutesToMillis(8) + secondsToMillis(2);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -85,7 +85,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test8() {
         long start = System.currentTimeMillis();
-        long end = start + days(3);
+        long end = start + daysToMillis(3);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -95,7 +95,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test9() {
         long start = System.currentTimeMillis();
-        long end = start + days(3) + hours(5);
+        long end = start + daysToMillis(3) + hoursToMillis(5);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -105,7 +105,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test10() {
         long start = System.currentTimeMillis();
-        long end = start + days(3) + minutes(7);
+        long end = start + daysToMillis(3) + minutesToMillis(7);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -115,7 +115,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test11() {
         long start = System.currentTimeMillis();
-        long end = start + days(3) + seconds(1);
+        long end = start + daysToMillis(3) + secondsToMillis(1);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -125,7 +125,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test12() {
         long start = System.currentTimeMillis();
-        long end = start + days(3) + minutes(4) + seconds(1);
+        long end = start + daysToMillis(3) + minutesToMillis(4) + secondsToMillis(1);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -135,7 +135,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test13() {
         long start = System.currentTimeMillis();
-        long end = start + days(3) + hours(4) + seconds(1);
+        long end = start + daysToMillis(3) + hoursToMillis(4) + secondsToMillis(1);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -145,7 +145,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test14() {
         long start = System.currentTimeMillis();
-        long end = start + days(3) + hours(4) + minutes(11);
+        long end = start + daysToMillis(3) + hoursToMillis(4) + minutesToMillis(11);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -155,7 +155,7 @@ class TimeUtilsShortTimeSpanFormatTest {
     @Test
     void test15() {
         long start = System.currentTimeMillis();
-        long end = start + days(3) + hours(4) + minutes(11) + seconds(4);
+        long end = start + daysToMillis(3) + hoursToMillis(4) + minutesToMillis(11) + secondsToMillis(4);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 

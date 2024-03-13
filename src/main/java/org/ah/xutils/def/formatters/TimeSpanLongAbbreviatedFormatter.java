@@ -9,7 +9,7 @@ import org.ah.xutils.def.TimeSpan;
  *
  * @author armend
  */
-public class TimeSpanLongAbbreviatedFormatter implements Formatter {
+public class TimeSpanLongAbbreviatedFormatter implements TimeSpanFormatter {
     @Override
     public String format(TimeSpan ts) {
         return ts.getDays() + " d, " + ts.getHours() + " h, " + ts.getMinutes() + " m, " + ts.getSeconds() + " s";

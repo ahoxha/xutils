@@ -7,7 +7,7 @@ import org.ah.xutils.def.TimeSpan;
  *
  * @author armend
  */
-public class TimeSpanShortAbbreviatedNoDelimFormatter implements Formatter {
+public class TimeSpanShortAbbreviatedNoDelimFormatter implements TimeSpanFormatter {
     @Override
     public String format(TimeSpan ts) {
         return String.join("",

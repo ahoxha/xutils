@@ -11,7 +11,7 @@ import org.ah.xutils.def.TimeSpan;
  *
  * @author armend
  */
-public class TimeSpanLongAbbreviatedNoDelimFormatter implements Formatter {
+public class TimeSpanLongAbbreviatedNoDelimFormatter implements TimeSpanFormatter {
     @Override
     public String format(TimeSpan ts) {
         return ts.getDays() + "d " + ts.getHours() + "h " + ts.getMinutes() + "m " + ts.getSeconds() + "s";

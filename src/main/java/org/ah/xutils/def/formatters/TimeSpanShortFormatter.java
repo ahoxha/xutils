@@ -7,7 +7,7 @@ import org.ah.xutils.def.TimeSpan;
  *
  * @author armend
  */
-public class TimeSpanShortFormatter implements Formatter {
+public class TimeSpanShortFormatter implements TimeSpanFormatter {
 
     @Override
     public String format(TimeSpan ts) {

@@ -1,9 +1,9 @@
 package org.ah.xutils.utils;
 
-import static org.ah.xutils.def.InMilliseconds.days;
-import static org.ah.xutils.def.InMilliseconds.hours;
-import static org.ah.xutils.def.InMilliseconds.minutes;
-import static org.ah.xutils.def.InMilliseconds.seconds;
+import static org.ah.xutils.def.MillisecondsUtils.daysToMillis;
+import static org.ah.xutils.def.MillisecondsUtils.hoursToMillis;
+import static org.ah.xutils.def.MillisecondsUtils.minutesToMillis;
+import static org.ah.xutils.def.MillisecondsUtils.secondsToMillis;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.ah.xutils.def.TimeSpan;
@@ -14,7 +14,7 @@ class TimeUtilsLongAbrNoDelimTimeSpanFormatTest {
     @Test
     void testSeconds() {
         long start = System.currentTimeMillis();
-        long end = start + seconds(5);
+        long end = start + secondsToMillis(5);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -24,7 +24,7 @@ class TimeUtilsLongAbrNoDelimTimeSpanFormatTest {
     @Test
     void testMinutes() {
         long start = System.currentTimeMillis();
-        long end = start + minutes(15);
+        long end = start + minutesToMillis(15);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -34,7 +34,7 @@ class TimeUtilsLongAbrNoDelimTimeSpanFormatTest {
     @Test
     void testHours() {
         long start = System.currentTimeMillis();
-        long end = start + hours(23);
+        long end = start + hoursToMillis(23);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -44,7 +44,7 @@ class TimeUtilsLongAbrNoDelimTimeSpanFormatTest {
     @Test
     void testDays() {
         long start = System.currentTimeMillis();
-        long end = start + days(2);
+        long end = start + daysToMillis(2);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 
@@ -54,7 +54,7 @@ class TimeUtilsLongAbrNoDelimTimeSpanFormatTest {
     @Test
     void testDaysHoursMinutesSeconds() {
         long start = System.currentTimeMillis();
-        long end = start + days(2) + hours(9) + minutes(43) + seconds(5);
+        long end = start + daysToMillis(2) + hoursToMillis(9) + minutesToMillis(43) + secondsToMillis(5);
 
         TimeSpan ts = TimeUtils.diff(start, end);
 

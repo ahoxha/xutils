@@ -1,13 +1,13 @@
 package org.ah.xutils.def;
 
-import static org.ah.xutils.def.InMilliseconds.days;
-import static org.ah.xutils.def.InMilliseconds.hours;
-import static org.ah.xutils.def.InMilliseconds.minutes;
-import static org.ah.xutils.def.InMilliseconds.seconds;
+import static org.ah.xutils.def.MillisecondsUtils.daysToMillis;
+import static org.ah.xutils.def.MillisecondsUtils.hoursToMillis;
+import static org.ah.xutils.def.MillisecondsUtils.minutesToMillis;
+import static org.ah.xutils.def.MillisecondsUtils.secondsToMillis;
 
 import javax.annotation.Nonnull;
 
-import org.ah.xutils.def.formatters.Formatter;
+import org.ah.xutils.def.formatters.TimeSpanFormatter;
 
 class TimeSpanImpl implements TimeSpan {
 
@@ -24,22 +24,22 @@ class TimeSpanImpl implements TimeSpan {
     }
 
     private long calculateDays(long millis) {
-        days = millis / days(1);
-        return millis - days(days);
+        days = millis / daysToMillis(1);
+        return millis - daysToMillis(days);
     }
 
     private long calculateHours(long millis) {
-        hours = millis / hours(1);
-        return millis - hours(hours);
+        hours = millis / hoursToMillis(1);
+        return millis - hoursToMillis(hours);
     }
 
     private long calculateMinutes(long millis) {
-        minutes = millis / minutes(1);
-        return millis - minutes(minutes);
+        minutes = millis / minutesToMillis(1);
+        return millis - minutesToMillis(minutes);
     }
 
     private void calculateSeconds(long millis) {
-        seconds = millis / seconds(1);
+        seconds = millis / secondsToMillis(1);
     }
 
     @Override
@@ -64,7 +64,7 @@ class TimeSpanImpl implements TimeSpan {
 
     @Override
     @Nonnull
-    public String format(Formatter formatter) {
+    public String format(@Nonnull TimeSpanFormatter formatter) {
         return formatter.format(this);
     }
 }
