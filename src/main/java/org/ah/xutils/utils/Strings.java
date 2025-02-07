@@ -9,6 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class Strings {
+    private static final Pattern CAMEL_CASE_PATTERN = Pattern.compile("([A-Za-z]*)[_ -.:;=]([A-Za-z]+)");
 
     private Strings() {
     }
@@ -52,8 +53,7 @@ public final class Strings {
         }
         StringBuilder sb = new StringBuilder();
         sb.append(prefix);
-        Pattern p = Pattern.compile("([A-Za-z]*)[_ -.:;=]([A-Za-z]+)");
-        Matcher matcher = p.matcher(str);
+        Matcher matcher = CAMEL_CASE_PATTERN.matcher(str);
         while (matcher.find()) {
             for (int i = 1; i <= matcher.groupCount(); i++) {
                 if (!matcher.group(i).isEmpty()) {
