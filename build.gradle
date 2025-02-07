@@ -3,28 +3,18 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'jacoco'
-    id "com.github.spotbugs" version "4.7.6"
+    id 'com.github.spotbugs' version '6.0.7'
 }
 
 repositories {
 	mavenCentral()
 }
 
-spotbugs {
-  	effort = "max"
- 	reportLevel = "high"
-  	visitors = ["FindSqlInjection", "SwitchFallthrough"]
-  	omitVisitors = ["FindNonShortCircuit"]
-}
-
-spotbugsMain {
-    reports {
-        html {
-            enabled = true
-            destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
-            stylesheet = 'fancy-hist.xsl'
-        }
-    }
+tasks.register('qualityCheck') {
+    group = myBuildGroup
+    description = 'Runs checks (excluding tests).'
+    dependsOn tasks.classes, tasks.spotbugsMain
+    dependsOn tasks.testClasses, tasks.spotbugsTest
 }
 
 dependencies {
