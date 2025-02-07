@@ -57,79 +57,79 @@ class StringsTest {
     }
 
     private static Stream<Arguments> getInputArgumentsWithPrefix() {
-        return Stream.of( //
-                given("NAME_AND_SURNAME") //
-                        .withPrefix("add") //
-                        .thenExpect("addNameAndSurname"), //
-                given("name") //
-                        .withPrefix("add") //
-                        .thenExpect("addName"), //
-                given("FIRST_NAME") //
-                        .withPrefix("add") //
-                        .thenExpect("addFirstName"), //
-                given("NAME_AND_SURNAME_AND_MIDDLE_NAME") //
-                        .withPrefix("add") //
-                        .thenExpect("addNameAndSurnameAndMiddleName"),//
-                given("AB_cD_and_a") //
-                        .withPrefix("add") //
-                        .thenExpect("addAbCdAndA"), //
-                given("_ABC_DEF") //
-                        .withPrefix("add") //
-                        .thenExpect("addAbcDef"), //
-                given("ABC_DEF_") //
-                        .withPrefix("add") //
-                        .thenExpect("addAbcDef"), //
-                given("_ABC_DEF_") //
-                        .withPrefix("add") //
-                        .thenExpect("addAbcDef"), //
-                given("A_b_c_D") //
-                        .withPrefix("add") //
-                        .thenExpect("addABCD"), //
-                given("CELSIUS_TO_FAHRENHEIT_CONVERTER") //
-                        .withPrefix("") //
-                        .thenExpect("CelsiusToFahrenheitConverter"), //
-                given("a") //
-                        .withPrefix("") //
-                        .thenExpect("A"), //
-                given("tESt") //
-                        .withPrefix("") //
-                        .thenExpect("Test"), //
-                given(null) //
-                        .withPrefix("") //
-                        .thenExpect(""), //
-                given("") //
-                        .withPrefix("") //
-                        .thenExpect(""), //
-                given("") //
-                        .withPrefix("add") //
-                        .thenExpect(""), //
-                given(null) //
-                        .withPrefix(null) //
-                        .thenExpect(""), //
-                given("test") //
-                        .withPrefix(null) //
-                        .thenExpect("") //
+        return Stream.of(
+                given("NAME_AND_SURNAME")
+                        .withPrefix("add")
+                        .thenExpect("addNameAndSurname"),
+                given("name")
+                        .withPrefix("add")
+                        .thenExpect("addName"),
+                given("FIRST_NAME")
+                        .withPrefix("add")
+                        .thenExpect("addFirstName"),
+                given("NAME_AND_SURNAME_AND_MIDDLE_NAME")
+                        .withPrefix("add")
+                        .thenExpect("addNameAndSurnameAndMiddleName"),
+                given("AB_cD_and_a")
+                        .withPrefix("add")
+                        .thenExpect("addAbCdAndA"),
+                given("_ABC_DEF")
+                        .withPrefix("add")
+                        .thenExpect("addAbcDef"),
+                given("ABC_DEF_")
+                        .withPrefix("add")
+                        .thenExpect("addAbcDef"),
+                given("_ABC_DEF_")
+                        .withPrefix("add")
+                        .thenExpect("addAbcDef"),
+                given("A_b_c_D")
+                        .withPrefix("add")
+                        .thenExpect("addABCD"),
+                given("CELSIUS_TO_FAHRENHEIT_CONVERTER")
+                        .withPrefix("")
+                        .thenExpect("CelsiusToFahrenheitConverter"),
+                given("a")
+                        .withPrefix("")
+                        .thenExpect("A"),
+                given("tESt")
+                        .withPrefix("")
+                        .thenExpect("Test"),
+                given(null)
+                        .withPrefix("")
+                        .thenExpect(""),
+                given("")
+                        .withPrefix("")
+                        .thenExpect(""),
+                given("")
+                        .withPrefix("add")
+                        .thenExpect(""),
+                given(null)
+                        .withPrefix(null)
+                        .thenExpect(""),
+                given("test")
+                        .withPrefix(null)
+                        .thenExpect("")
         );
     }
 
     private static Stream<Arguments> getInputArgumentsWithoutPrefix() {
-        return Stream.of( //
-                given("COSMIC_MICROWAVE_BACKGROUND_RADIATION") //
-                        .thenExpect("CosmicMicrowaveBackgroundRadiation"), //
-                given("first name") //
-                        .thenExpect("FirstName"), //
-                given("last-name") //
-                        .thenExpect("LastName"), //
-                given("my custom -class") //
-                        .thenExpect("MyCustomClass"), //
-                given("my:custom:class") //
-                        .thenExpect("MyCustomClass"), //
-                given("My;custoM;class") //
-                        .thenExpect("MyCustomClass"), //
-                given("My;custoM;class;") //
-                        .thenExpect("MyCustomClass"), //
-                given("my=custom=class") //
-                        .thenExpect("MyCustomClass") //
+        return Stream.of(
+                given("COSMIC_MICROWAVE_BACKGROUND_RADIATION")
+                        .thenExpect("CosmicMicrowaveBackgroundRadiation"),
+                given("first name")
+                        .thenExpect("FirstName"),
+                given("last-name")
+                        .thenExpect("LastName"),
+                given("my custom -class")
+                        .thenExpect("MyCustomClass"),
+                given("my:custom:class")
+                        .thenExpect("MyCustomClass"),
+                given("My;custoM;class")
+                        .thenExpect("MyCustomClass"),
+                given("My;custoM;class;")
+                        .thenExpect("MyCustomClass"),
+                given("my=custom=class")
+                        .thenExpect("MyCustomClass")
         );
     }
 
